@@ -1,12 +1,8 @@
 <?php
 include 'db.php';
 
-$sql = "SELECT * FROM usuarios";
+$sql = "SELECT * FROM Usuarios";
 $result = $conn->query($sql);
-
-if (!$result) {
-    die('Query failed: ' . $conn->error);
-}
 
 $users = [];
 while ($row = $result->fetch_assoc()) {

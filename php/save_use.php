@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST["nombre"]
     $correo = $_POST["correo"]
 
-    $stmt = $conn->prepare("INSERT INTO usuarios (nombre, correo) VALUES (?, ?)");
+    $stmt = $conn->prepare("INSERT INTO Usuarios (nombre, correo) VALUES (?, ?)");
     $stmt->bind_param("ss", $nombre, $correo);
 
     if ($stmt->execute()) {

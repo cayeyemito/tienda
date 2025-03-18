@@ -16,7 +16,7 @@ document.getElementById("userForm").addEventListener("submit", function(event) {
     });
 });
 
-/*function loadUsers() {
+function loadUsers() {
     fetch("./php/get_users.php")
     .then(response => response.json())
     .then(users => {
@@ -27,6 +27,6 @@ document.getElementById("userForm").addEventListener("submit", function(event) {
             table.innerHTML += row;
         });
     });
-}*/
+}
 
 window.onload = loadUsers;

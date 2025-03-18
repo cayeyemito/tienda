@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="duro.css">
+</head>
+<body>
+    <h2>Registro de usuarios</h2>
+    <form id="userForm">
+        <input type="text" placeholder="nombre" id="nombre">
+        <input type="email" placeholder="Correo" id="correo">
+        <button type="submit">Registrar</button>
+    </form>
+    <h3>Usuarios registrados</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+            </tr>
+        </thead>
+        <tbody id="userTable"></tbody>
+    </table>
+    <script src="duro.js"></script>
+</body>
+</html>

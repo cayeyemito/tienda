@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MI PRIMERA WEB EN SERVIDOR</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Hola</h1>
-    <h2>Probando que todo funcione</h2>
-    <h3>Última prueba</h3>
-    <h4>Ultimissima prueba</h4>
-    <h5>heeey</h5>
-    <h6>lol</h6>
-    <h6>dfosdpfigjp</h6>
-    <h6>asdaisdpa</h6>
-    <h5>ssssssssss</h5>
-    <h4>2232332</h4>
-    <h3>asdasd</h3>
-    <h3>asdasd</h3>
-    <h2>111111111111111111</h2>
+    <h2>Registro de Usuarios</h2>
+    <form id="userForm">
+        <input type="text" id="nombre" placeholder="Nombre" required>
+        <input type="email" id="correo" placeholder="Correo" required>
+        <button type="submit">Registrar</button>
+    </form>
+
+    <h3>Usuarios Registrados</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+            </tr>
+        </thead>
+        <tbody id="userTable"></tbody>
+    </table>
+
 </body>
 </html>

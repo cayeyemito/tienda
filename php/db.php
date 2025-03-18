@@ -1,0 +1,12 @@
+<?php
+$host = "45.13.185.247";
+$user = "cayetano";
+$password = "9?mIr79a2";
+$database = "tiendaBBDD";
+
+$conn = new mysqli($host, $user, $password, $database);
+
+if($conn->connect_error){
+    die("Error de conexión: " . $conn->connect_error);
+}
+?>

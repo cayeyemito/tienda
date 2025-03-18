@@ -3,7 +3,7 @@ document.getElementById("userForm").addEventListener("submit", function(event) {
     let nombre = document.getElementById("nombre").value;
     let correo = document.getElementById("correo").value;
     
-    fetch("./php/save_use.php", {
+    fetch("./php/save_user.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `nombre=${nombre}&correo=${correo}`

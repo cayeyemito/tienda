@@ -52,6 +52,4 @@ function editUser(id, nombre, correo) {
     document.getElementById("correo").value = correo;
 }
 
-window.onload = loadUsers;
-
 window.onload = loadUsers();

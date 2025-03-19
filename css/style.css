@@ -14,7 +14,7 @@ input{
     width: 200px;
 }
 
-button{
+.submit{
     padding: 10px;
     background: #000000;
     color: white;
@@ -22,7 +22,7 @@ button{
     cursor: pointer;
 }
 
-button:hover {
+.submit:hover {
     background: #218838;
 }
 

@@ -45,7 +45,6 @@ function deleteUser(userId) {
     }
 }
 
-
 function editUser(id, nombre, correo) {
     document.getElementById("userId").value = id;
     document.getElementById("nombre").value = nombre;

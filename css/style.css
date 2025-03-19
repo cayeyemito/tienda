@@ -43,4 +43,34 @@ th, td{
 .icon{
     width: 20px;
     height: 20px;
+    position: absolute;
+    right: 2%;
 }
+
+/* Para pantallas pequeñas (hasta 600px) */
+@media only screen and (max-width: 600px) {
+    .icon {
+      right: 8%;
+    }
+  }
+  
+  /* Para pantallas medianas (hasta 768px) */
+  @media only screen and (max-width: 768px) {
+    .icon {
+      right: 6%;
+    }
+  }
+  
+  /* Para pantallas grandes (hasta 1024px) */
+  @media only screen and (max-width: 1024px) {
+    .icon {
+      right: 4%;
+    }
+  }
+  
+  /* Para pantallas extra grandes (más de 1024px) */
+  @media only screen and (min-width: 1025px) {
+    .icon {
+      right: 2%;
+    }
+  }

@@ -47,11 +47,22 @@ th, td{
     right: 2%;
 }
 
+.icon2{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 4%;
+}
+
 /* Para pantallas pequeñas (hasta 600px) */
 @media only screen and (max-width: 600px) {
     .icon {
       right: 8%;
     }
+
+    .icon2 {
+        right: 10%;
+      }
   }
   
   /* Para pantallas medianas (hasta 768px) */
@@ -59,6 +70,10 @@ th, td{
     .icon {
       right: 6%;
     }
+
+    .icon2 {
+        right: 8%;
+      }
   }
   
   /* Para pantallas grandes (hasta 1024px) */
@@ -66,6 +81,10 @@ th, td{
     .icon {
       right: 4%;
     }
+
+    .icon2 {
+        right: 6%;
+      }
   }
   
   /* Para pantallas extra grandes (más de 1024px) */
@@ -73,4 +92,8 @@ th, td{
     .icon {
       right: 2%;
     }
+
+    .icon2 {
+        right: 4%;
+      }
   }

@@ -23,12 +23,11 @@ function loadUsers() {
         let table = document.getElementById("userTable");
         table.innerHTML = "";
         users.forEach(user => {
-            let row = `<tr><td>${user.id}</td><td>${user.nombre}</td><td>${user.correo}</td><td><img src="../img/papelera.png"></td></tr>`;
+            let row = `<tr><td>${user.id}</td><td>${user.nombre}</td><td>${user.correo}<img src="../img/papelera.png" class='icon'></td></tr>`;
             table.innerHTML += row;
         });
     });
 }
-
 
 
 window.onload = loadUsers();

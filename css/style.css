@@ -39,3 +39,8 @@ table, th, td{
 th, td{
     padding: 10px;
 }
+
+.icon{
+    width: 20px;
+    height: 20px;
+}

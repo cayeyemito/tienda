@@ -23,7 +23,7 @@ function loadUsers() {
         let table = document.getElementById("userTable");
         table.innerHTML = "";
         users.forEach(user => {
-            let row = `<tr><td>${user.id}</td><td>${user.nombre}</td><td>${user.correo}<img src="../img/editar.png" class="icon2" onclick="editUser(${user.id}, ${user.nombre}, ${user.correo})"><img src="../img/papelera.png" class="icon" onclick="deleteUser(${user.id})"></td></tr>`;
+            let row = `<tr><td>${user.id}</td><td>${user.nombre}</td><td>${user.correo}<img src="../img/editar.png" class="icon2" onclick="editUser(${user.id}, '${user.nombre}', '${user.correo}')"><img src="../img/papelera.png" class="icon" onclick="deleteUser(${user.id})"></td></tr>`;
             table.innerHTML += row;
         });
     });
@@ -46,7 +46,6 @@ function deleteUser(userId) {
 }
 
 function editUser(id, nombre, correo) {
-    document.getElementById("userId").value = id;
     document.getElementById("nombre").value = nombre;
     document.getElementById("correo").value = correo;
 }

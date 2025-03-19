@@ -1,3 +1,5 @@
+let editId;
+
 document.getElementById("userForm").addEventListener("submit", function(event) {
     event.preventDefault();
     let nombre = document.getElementById("nombre").value;
@@ -39,7 +41,7 @@ function deleteUser(userId) {
         .then(response => response.text())
         .then(data => {
             alert(data);
-            loadUsers(); // Recargar la lista de usuarios tras la eliminación
+            loadUsers();
         })
         .catch(error => console.error("Error:", error));
     }
@@ -48,6 +50,8 @@ function deleteUser(userId) {
 function editUser(id, nombre, correo) {
     document.getElementById("nombre").value = nombre;
     document.getElementById("correo").value = correo;
+    editId = id;
+    document.getElementById("submit").innerHTML = "Editar";
 }
 
 window.onload = loadUsers();

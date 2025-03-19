@@ -23,19 +23,12 @@ function loadUsers() {
         let table = document.getElementById("userTable");
         table.innerHTML = "";
         users.forEach(user => {
-            let row = `<tr><td>${user.id}</td><td>${user.nombre}</td><td>${user.correo}</td></tr>`;
+            let row = `<tr><td>${user.id}</td><td>${user.nombre}</td><td>${user.correo}</td><td><img src="../img/papelera.png"></td></tr>`;
             table.innerHTML += row;
         });
     });
 }
 
-/*ocument.getElementById("userForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    let id = 
 
-    fetch("./php/delete_user.php")
-        
-
-});*/
 
 window.onload = loadUsers();

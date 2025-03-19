@@ -29,4 +29,13 @@ function loadUsers() {
     });
 }
 
+document.getElementById("userForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    let id = 
+
+    fetch("./php/delete_user.php")
+        
+
+});
+
 window.onload = loadUsers();

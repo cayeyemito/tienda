@@ -21,16 +21,18 @@
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Correo</th>
+                <th></th>
             </tr>
         </thead>
         <tbody id="userTable"></tbody>
     </table>
 
+    <div class="overlay" id="overlay"></div>
     <div id="editPopup" class="popup">
         <h2>Editar Usuario</h2>
-        <input type="text" id="nombre" placeholder="Nombre">
-        <input type="email" id="correo" placeholder="Correo">
-        <button onclick="saveUser()">Guardar</button>
+        <input type="text" id="nombreEdit" placeholder="Nombre">
+        <input type="email" id="correoEdit" placeholder="Correo">
+        <button class="save" onclick="saveUser()">Guardar</button>
         <button class="close" onclick="closePopup()">Cancelar</button>
     </div>
     <script src="js/main.js"></script>

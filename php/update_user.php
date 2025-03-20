@@ -4,9 +4,9 @@ include 'db.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST["nombre"];
     $correo = $_POST["correo"];
-    $userId = $_POST["id"]
+    $userId = $_POST["id"];
 
-    $stmt = $conn->prepare("UPDATE INTO Usuarios (nombre, correo) VALUES (?, ?) WHERE id = ?");
+    $stmt = $conn->prepare("UPDATE Usuarios SET nombre = ?, correo = ? WHERE id = ?");
     $stmt->bind_param("ssi", $nombre, $correo, $userId);
 
     if ($stmt->execute()) {

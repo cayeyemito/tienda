@@ -1,143 +1,146 @@
-body{
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 20px;
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
 }
-
-form{
-    margin-bottom: 20px;
+h2, h3 {
+  color: #333;
 }
-
-input{
-    padding: 10px;
-    margin: 5px;
-    width: 200px;
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
-
-.submit{
-    padding: 10px;
-    background: #000000;
-    color: white;
-    border: none;
-    cursor: pointer;
+input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.3s;
 }
-
+input:focus {
+  border-color: #007bff;
+}
+.submit {
+  padding: 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
 .submit:hover {
-    background: #218838;
+  background: #0056b3;
 }
-
-table{
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+table {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
-
-table, th, td{
-    border: 1px solid black;
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
 }
-
-th, td{
-    padding: 10px;
+th {
+  background: #007bff;
+  color: white;
 }
-
+.icon, .icon2 {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
 .icon{
     width: 20px;
     height: 20px;
-    position: absolute;
-    right: 2%;
 }
 
 .icon2{
     width: 20px;
     height: 20px;
-    position: absolute;
-    right: 4%;
 }
 
-/* Para pantallas pequeñas (hasta 600px) */
-@media only screen and (max-width: 600px) {
-    .icon {
-      right: 8%;
-    }
-
-    .icon2 {
-        right: 10%;
-      }
-  }
-  
-  /* Para pantallas medianas (hasta 768px) */
-  @media only screen and (max-width: 768px) {
-    .icon {
-      right: 6%;
-    }
-
-    .icon2 {
-        right: 8%;
-      }
-  }
-  
-  /* Para pantallas grandes (hasta 1024px) */
-  @media only screen and (max-width: 1024px) {
-    .icon {
-      right: 4%;
-    }
-
-    .icon2 {
-        right: 6%;
-      }
-  }
-  
-  /* Para pantallas extra grandes (más de 1024px) */
-  @media only screen and (min-width: 1025px) {
-    .icon {
-      right: 2%;
-    }
-
-    .icon2 {
-        right: 4%;
-      }
-  }
-
-body {
-  font-family: Arial, sans-serif;
-}
 .popup {
   display: none;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  width: 300px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  text-align: center;
 }
 .popup h2 {
-  margin-top: 0;
+    margin-top: 0;
+    color: #333;
 }
 .popup input {
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s;
+}
+.popup input:focus {
+    border-color: #007bff;
 }
 .popup button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background: #28a745;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
-.popup button:hover {
-  background: #218838;
+.popup .save {
+    background: #007bff;
+    color: white;
+}
+.popup .save:hover {
+    background: #0056b3;
 }
 .popup .close {
-  background: #dc3545;
+    background: #dc3545;
+    color: white;
+    margin-top: 10px;
 }
 .popup .close:hover {
   background: #c82333;
+}
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
 }

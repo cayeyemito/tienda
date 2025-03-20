@@ -25,6 +25,14 @@
         </thead>
         <tbody id="userTable"></tbody>
     </table>
+
+    <div id="editPopup" class="popup">
+        <h2>Editar Usuario</h2>
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="email" id="correo" placeholder="Correo">
+        <button onclick="saveUser()">Guardar</button>
+        <button class="close" onclick="closePopup()">Cancelar</button>
+    </div>
     <script src="js/main.js"></script>
 </body>
 </html>

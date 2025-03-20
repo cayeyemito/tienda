@@ -48,10 +48,19 @@ function deleteUser(userId) {
 }
 
 function editUser(id, nombre, correo) {
-    document.getElementById("nombre").value = nombre;
-    document.getElementById("correo").value = correo;
     editId = id;
-    document.getElementById("submit").innerHTML = "Editar";
+    document.getElementById("editPopup").style.display = "block";
+}
+
+function saveUser() {
+    let nombre = document.getElementById("nombre").value;
+    let correo = document.getElementById("correo").value;
+    console.log("Usuario actualizado:", { id: editId, nombre, correo });
+    closePopup();
+}
+
+function closePopup() {
+    document.getElementById("editPopup").style.display = "none";
 }
 
 window.onload = loadUsers();

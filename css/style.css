@@ -1,4 +1,4 @@
-body {
+/*body {
   font-family: 'Poppins', sans-serif;
   background: #f4f4f4;
   display: flex;
@@ -143,4 +143,85 @@ th {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
+}*/
+
+body{
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.mainSection{
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+}
+
+.mainText{
+  position: absolute;
+  top: 30%;
+  left: 5%;
+}
+
+.title{
+  color: white;
+  font-size: 100px;
+}
+
+@media (max-width: 1200px) {
+  .title {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 992px) {
+  .title {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 280px) {
+  .title {
+    font-size: 18px;
+  }
+}
+
+.button-container {
+  margin-top: 40px;
+  display: flex;
+  gap: 80px;
+}
+
+button {
+  width: 300px;
+  border: none;
+  background-color: rgb(40, 190, 190);
+  padding: 10px 20px;
+}
+
+.text{
+  font-size: 30px;
+  color: white;
+}
+
+.boton{
+  border-radius: 10px;
+  cursor: pointer;
 }

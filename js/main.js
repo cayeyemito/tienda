@@ -1,4 +1,4 @@
-let editId;
+/*let editId;
 let editName;
 let editCorreo;
 
@@ -81,4 +81,8 @@ function closePopup() {
     document.getElementById("overlay").style.display = "none";
 }
 
-window.onload = loadUsers();
+window.onload = loadUsers();*/
+
+function inicioSesion(){
+    window.location.href = "./htmls/inicio-sesion.html"
+}

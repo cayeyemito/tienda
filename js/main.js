@@ -58,7 +58,7 @@ function nextStep() {
 
     nombre = document.getElementById('registerName').value.trim();
     correo = document.getElementById('registerEmail').value.trim();
-    if (email && !/\S+@\S+\.\S+/.test(email)) {
+    if (correo && !/\S+@\S+\.\S+/.test(correo)) {
         showError('registerEmail', 'Formato de email inválido');
         hasErrors = true;
     }
@@ -90,27 +90,29 @@ function validateLoginForm(event) {
     validateField('loginEmail', 'Email requerido');
     validateField('loginPassword', 'Contraseña requerida');
 
+    const password = document.getElementById('loginPassword').value.trim();
     const email = document.getElementById('loginEmail').value.trim();
     if (email && !/\S+@\S+\.\S+/.test(email)) {
         showError('loginEmail', 'Formato de email inválido');
         hasErrors = true;
     }
 
-    if (!hasErrors) {
-        event.preventDefault();
-    
-        // Verifica que el correo tenga un valor
-        console.log("Email:", email);
-    
-        fetch(`./php/get_user.php?correo=${encodeURIComponent(email)}`)
-            .then(response => response.json())  // Asegúrate de que la respuesta esté en formato JSON
-            .then(data => {
-                console.log("Data:", data);  // Muestra la respuesta del servidor
-                alert(JSON.stringify(data));  // Muestra la respuesta del servidor en formato JSON
-                closeModal('login');
-            })
-            .catch(error => console.error("Error:", error));
-    }
+    fetch(`./php/get_user.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `correo=${encodeURIComponent(email)}&contrasenya=${encodeURIComponent(password)}`
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(response => response.text())
+        .then(text => {
+            console.log("Respuesta completa:", text);
+        })
+    .catch(error => console.error("Error:", error));
 }
 
 function validateRegisterForm(event) {

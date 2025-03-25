@@ -23,8 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $stmt->close();
 
+    $hash_contraseña = password_hash($contrasenya, PASSWORD_BCRYPT);
+
     $stmt = $conn->prepare("INSERT INTO Usuarios (nombre, correo, fechaNacimiento, contrasenya, telefono) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $nombre, $correo, $fechaNacimiento, $contrasenya, $telefono);
+    $stmt->bind_param("sssss", $nombre, $correo, $fechaNacimiento, $hash_contraseña, $telefono);
 
     if ($stmt->execute()) {
         echo "Usuario registrado correctamente.";

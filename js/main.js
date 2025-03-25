@@ -1,4 +1,9 @@
-// JavaScript Corregido
+let correo
+let nombre
+let birthdate
+let telefono
+let password
+
 function openModal(type) {
     const modal = document.getElementById(`${type}Modal`);
     modal.style.display = 'flex';
@@ -51,13 +56,14 @@ function nextStep() {
     validateField('registerEmail', 'Email requerido');
     validateField('registerPassword', 'Contraseña requerida');
 
-    const email = document.getElementById('registerEmail').value.trim();
+    nombre = document.getElementById('registerName').value.trim();
+    correo = document.getElementById('registerEmail').value.trim();
     if (email && !/\S+@\S+\.\S+/.test(email)) {
         showError('registerEmail', 'Formato de email inválido');
         hasErrors = true;
     }
 
-    const password = document.getElementById('registerPassword').value.trim();
+    password = document.getElementById('registerPassword').value.trim();
     if (password && password.length < 6) {
         showError('registerPassword', 'Mínimo 6 caracteres');
         hasErrors = true;
@@ -91,8 +97,19 @@ function validateLoginForm(event) {
     }
 
     if (!hasErrors) {
-        alert('Inicio de sesión exitoso!');
-        closeModal('login');
+        event.preventDefault();
+    
+        // Verifica que el correo tenga un valor
+        console.log("Email:", email);
+    
+        fetch(`./php/get_user.php?correo=${encodeURIComponent(email)}`)
+            .then(response => response.json())  // Asegúrate de que la respuesta esté en formato JSON
+            .then(data => {
+                console.log("Data:", data);  // Muestra la respuesta del servidor
+                alert(JSON.stringify(data));  // Muestra la respuesta del servidor en formato JSON
+                closeModal('login');
+            })
+            .catch(error => console.error("Error:", error));
     }
 }
 
@@ -101,9 +118,15 @@ function validateRegisterForm(event) {
     let hasErrors = false;
     
     // Validación del paso 2
-    const birthdate = document.getElementById('birthdate').value;
+    birthdate = document.getElementById('birthdate').value;
     if (!birthdate) {
         showError('birthdate', 'Fecha de nacimiento requerida');
+        hasErrors = true;
+    }
+
+    telefono = document.getElementById('telefono').value;
+    if (!telefono) {
+        showError('telefono', 'Teléfono requerido');
         hasErrors = true;
     }
 
@@ -114,7 +137,17 @@ function validateRegisterForm(event) {
     }
 
     if (!hasErrors) {
-        alert('Registro completado con éxito!');
-        closeModal('register');
+        event.preventDefault();
+
+        fetch("./php/save_user.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `nombre=${nombre}&correo=${correo}&fechaNacimiento=${birthdate}&contrasenya=${password}&telefono=${telefono}`
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data);
+            closeModal('register');
+        })
     }
 }

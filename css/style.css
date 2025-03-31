@@ -1,13 +1,12 @@
 body{
   margin: 0;
   font-family: "Roboto", sans-serif;
-  background-color: #0a0a0a !important;
+  background-color: grey !important;
 }
 
 .mainSection{
   height: 100vh;
   width: 100vw;
-  background-color: black;
 }
 
 .mainText{
@@ -497,4 +496,9 @@ input[type="date"] {
 
 input[type="date"]:valid {
   color: #fff;
+}
+
+.circle{
+  border: 1px solid #0a0a0a;
+  border-radius: 50%;
 }

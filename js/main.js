@@ -51,6 +51,8 @@ function restartBrightness() {
   if (mainSection) mainSection.innerHTML = '';
   if (contenido) contenido.innerHTML = '';
 
+  createMenuPrincipal();
+
   // Iniciar una animación inversa para restaurar el brillo a 1
   function animateRestore(timestamp, startTime) {
       if (!startTime) startTime = timestamp;
@@ -68,6 +70,9 @@ function restartBrightness() {
   animation = requestAnimationFrame((ts) => animateRestore(ts, ts));
 }
 
-
 // Inicializar brillo al cargar
 document.body.style.filter = `sepia(0.75) brightness(${initialBrightness})`;
+
+function createMenuPrincipal(){
+  
+}

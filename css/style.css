@@ -1,12 +1,168 @@
-.mainSection{
-  height: 100vh;
-  width: 100vw;
+:root {
+	--trsn: all 0.5s ease 0s;
+	--black: #000;
 }
 
-.circle {
-  border: 4px solid #0a0a0a;
+*, *:before, *:after {
+	position: absolute;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--black);
+  filter: sepia(0.75); /* Aplica el filtro sepia directamente */
+	perspective: 100vmin;
+}
+
+.content {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-size: cover;
+	transition: var(--trsn);
+  background-color: grey;
+}
+
+.content:before {
+	font-family: Arial, Helvetica, serif;
+	bottom: 0vmin;
+	font-weight: 500;
+	font-size: 1.35vmin;
+	color: #fffD;
+	border-radius: 1px;
+	padding: 20vmin 2vmin 3vmin;
+	letter-spacing: 0.5px;
+	word-spacing: 3px;
+	background: linear-gradient(0deg, black, transparent);
+	width: 100%;
+	text-align: center;
+}
+
+.content:after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	box-shadow: 0 0 20vmin 0vmin var(--black) inset, 0 0 3vmin 0.5vmin var(--black) inset, 0 0 1vmin 1vmin var(--black);
+}
+
+.film, .effect {
+	width: 100%;
+	height: 100%;
+	filter: blur(0.45px) drop-shadow(0px 0px 0px #fff1);
+}
+
+.film:after, .effect:after {
+	content: '';
+	width: 120%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	padding-left: 100px;
+	opacity: 0.5;
+	animation: film-scratch 0.45s steps(1) infinite;
+	background: repeating-linear-gradient(90deg, #0002 0 2px, transparent 4px 37vmin);
+}
+
+.effect:after {
+	left: 30%;
+	animation: effect-scratch 2s infinite;
+}
+
+.grain {
+	width: 100%;
+	height: 100%;
+}
+
+.grain:after {
+	content: '';
+	width: 110%;
+	height: 110%;
+	top: -5%;
+	left: -5%;
+	opacity: .25;
+	background-image: 
+		repeating-conic-gradient(var(--black) 0%, transparent .00003%, transparent .0005%, transparent .00095%),
+		repeating-conic-gradient(var(--black) 0%, transparent .00005%, transparent 0.00015%, transparent 0.0009%);
+	animation: grain 0.5s steps(1) infinite;
+	filter: drop-shadow(0px 0px 1px black);
+}
+
+@keyframes grain {
+	0%, 100% { transform: translate(0, 0); }
+	10% { transform: translate(-1%, -1%); }
+	20% { transform: translate(1%, 1%); }
+	30% { transform: translate(-2%, -2%); }
+	40% { transform: translate(3%, 3%); }
+	50% { transform: translate(-3%, -3%); }
+	60% { transform: translate(4%, 4%); }
+	70% { transform: translate(-4%, -4%); }
+	80% { transform: translate(2%, 2%); }
+	90% { transform: translate(-3%, -3%); }
+}
+
+@keyframes film-scratch {
+	0%, 100% { transform: translateX(0); opacity: 0.5; }
+	10% { transform: translateX(-1%); }
+	20% { transform: translateX(1%); }
+	30% { transform: translateX(-2%); opacity: 0.75; }
+	40% { transform: translateX(3%); }
+	50% { transform: translateX(-3%); opacity: 0.5; }
+	60% { transform: translateX(8%); }
+	70% { transform: translateX(-3%); }
+	80% { transform: translateX(10%); opacity: 0.25; }
+	90% { transform: translateX(-2%); }
+}
+
+@keyframes effect-scratch {
+	0% { transform: translateX(0); opacity: 0.75; }
+	10% { transform: translateX(-1%); }
+	20% { transform: translateX(1%); }
+	30% { transform: translateX(-2%); }
+	40% { transform: translateX(3%); }
+	50% { transform: translateX(-3%); opacity: 0.5; }
+	60% { transform: translateX(8%); }
+	70% { transform: translateX(-3%); }
+	80% { transform: translateX(10%); opacity: 0.25; }
+	90% { transform: translateX(20%); }
+	100% { transform: translateX(30%); }
+}
+
+@property --pos {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 20%;
+}
+
+.mainSection {
+	position: absolute;
+	z-index: 2;
+	width: 100vw;
+	height: 100vh;
+}
+
+.seccionCuenta{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle{
+  border: 4px solid rgb(22, 22, 22);
   border-radius: 50%;
-  height: 90%;
+  height: 80%;
   aspect-ratio: 1;
   display: flex;
   align-items: center;
@@ -14,20 +170,10 @@
 }
 
 .circle2 {
-  border: 4px solid #0a0a0a;
+  border: 4px solid rgb(22, 22, 22);
   border-radius: 50%;
-  height: 88%;
+  height: 92%;
   aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.seccionCuenta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
 }
 
 .cuentaAtras {
@@ -38,48 +184,54 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: clamp(100px, 20vw, 500px); /* Mínimo 100px, adaptable con 20vw, máximo 500px */
+  font-size: clamp(100px, 20vw, 500px);
   font-weight: bold;
-  color: black;
+  color: rgb(22, 22, 22);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  z-index: 2;
-}
-
-h1{
-  padding: 0;
-  margin: 0;
+  z-index: 1000; 
 }
 
 .linea-horizontal, .linea-vertical {
-  position: fixed; /* Cambiado de absolute a fixed */
+  position: fixed;
   background-color: rgb(209, 209, 209);
-  z-index: 1;
+  z-index: 2;
 }
 
-/* Línea horizontal */
+
 .linea-horizontal {
   width: 100%;
-  height: 2px;
+  height: 1px;
   top: 50%;
   left: 0;
   transform: translateY(-50%);
 }
 
-/* Línea vertical */
 .linea-vertical {
-  height: 100vh; /* Usamos viewport height para que ocupe toda la altura */
-  width: 2px;
-  top: 0; /* Comienza desde la parte superior */
+  height: 100vh;
+  width: 1px; /* Agrega este valor para que se vea */
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
 }
 
-body {
-	margin: 0;
-	padding: 0;
-	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
-	background: var(--black);
-  background-color: grey !important;
+.needle {
+  position: absolute;
+  top: calc(50% - 2px);
+  left: 50%;
+  height: 1px;
+  width: 1200px;
+  background: rgb(209, 209, 209);
+  animation: animate 1s linear infinite;
+  transform-origin: left;
+  z-index: 999;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(-90deg);
+  }
+  
+  100% {
+    transform: rotate(270deg);
+  }
 }

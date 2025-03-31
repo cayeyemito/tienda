@@ -11,83 +11,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Sección principal sin cambios -->
-    <!--<section class="mainSection">
-        <div class="row">
-            <div class="col-6 mainText">
-                <h1 class="title">Bienvenido a un nuevo mundo</h1>
-                <div class="button-container">
-                    <button class="boton" onclick="openModal('login')">Inicio de sesión</button>
-                    <button class="boton" onclick="openModal('register')">Registrarse</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('login')">&times;</span>
-            <h2 class="modal-title">Inicio de sesión</h2>
-            <form id="loginForm" onsubmit="validateLoginForm(event)">
-                <div class="modal-input-group">
-                    <input type="email" id="loginEmail" placeholder="Correo electrónico">
-                    <span class="input-error"></span>
-                </div>
-                <div class="modal-input-group">
-                    <input type="password" id="loginPassword" placeholder="Contraseña">
-                    <span class="input-error"></span>
-                </div>
-                <button type="submit" class="boton">Iniciar sesión</button>
-            </form>
-        </div>
+    <div id="contenido">
+        <div class="needle"></div>
+        <div class="cuentaAtras" id="cuentaAtras">5</div>
+        <div class="linea-horizontal"></div>
+        <div class="linea-vertical"></div>
     </div>
-
-    <div id="registerModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('register')">&times;</span>
-            <h2 class="modal-title">Registrarse</h2>
-            <div id="step1">
-                <form id="registerForm1">
-                    <div class="modal-input-group">
-                        <input type="text" id="registerName" placeholder="Nombre">
-                        <span class="input-error"></span>
-                    </div>
-                    <div class="modal-input-group">
-                        <input type="email" id="registerEmail" placeholder="Correo electrónico">
-                        <span class="input-error"></span>
-                    </div>
-                    <div class="modal-input-group">
-                        <input type="password" id="registerPassword" placeholder="Contraseña">
-                        <span class="input-error"></span>
-                    </div>
-                    <button type="button" class="boton" onclick="nextStep()">Siguiente</button>
-                </form>
-            </div>
-            
-            <div id="step2" style="display: none;">
-                <form id="registerForm2" onsubmit="validateRegisterForm(event)">
-                    <div class="modal-input-group">
-                        <input type="date" id="birthdate">
-                        <span class="input-error"></span>
-                    </div>
-                    <div class="modal-input-group">
-                        <input type="text" id="telefono" placeholder="Teléfono">
-                        <span class="input-error"></span>
-                    </div>
-                    <div class="modal-input-group terms-group">
-                        <div class="terms-container">
-                            <input type="checkbox" id="terms">
-                            <label for="terms" class="terms-label">Acepto las políticas y términos</label>
-                        </div>
-                        <span class="terms-error"></span>
-                    </div>
-                    <button type="submit" class="boton">Registrarme</button>
-                </form>
-            </div>
-        </div>
-    </div> -->
-    <div class="row mainSection">
+    <div class="row mainSection" id="mainSection">
         <div class="col-6 offset-3 seccionCuenta">
             <div class="circle">
                 <div class="circle2">
@@ -95,9 +25,13 @@
             </div>
         </div>
     </div>
-    <div class="cuentaAtras" id="cuentaAtras">5</div>
-    <div class="linea-horizontal"></div>
-    <div class="linea-vertical"></div>
+    <div class="content">
+        <div class='film'>
+            <div class="effect">
+                <div class="grain"></div>
+            </div>
+        </div>
+    </div>
     <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

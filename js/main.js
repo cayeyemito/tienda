@@ -1,16 +1,73 @@
-let contador = 5; // Número inicial
+// En tu archivo main.js
+let count = 5;
+let animation;
+const initialBrightness = 1; // Valor inicial del brillo
+const targetBrightness = 0; // Valor final del brillo (más oscuro)
 
-const cuentaAtras = document.getElementById('cuentaAtras'); // Obtener el elemento
+function updateBackground(progress) {
+    const currentBrightness = initialBrightness - (initialBrightness - targetBrightness) * progress;
+    document.body.style.filter = `sepia(0.75) brightness(${currentBrightness})`;
+}
 
-// Función para actualizar la cuenta regresiva
-const actualizarCuentaAtras = () => {
-  if (contador > 0) {
-    contador--; // Restar 1 al contador
-    cuentaAtras.textContent = contador; // Actualizar el contenido del h1
-  } else {
-    clearInterval(intervalo); // Detener el intervalo cuando llega a 0
+function animate(timestamp, startTime) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / 1000, 1);
+    
+    updateBackground(progress);
+    
+    if (progress < 1) {
+        animation = requestAnimationFrame((ts) => animate(ts, startTime));
+    }
+}
+
+function startAnimation() {
+    cancelAnimationFrame(animation);
+    animation = requestAnimationFrame((ts) => animate(ts, ts));
+}
+
+// Modifica tu temporizador
+const timer = setInterval(() => {
+  count--;
+  document.getElementById('cuentaAtras').textContent = count;
+
+  if (count <= 0) {
+      clearInterval(timer);
+      startAnimation();
+
+      // Restaurar brillo después de la animación
+      setTimeout(() => {
+        restartBrightness()
+      }, 1000);
   }
-};
+}, 1000);
 
-// Ejecutar la función cada 1 segundo
-const intervalo = setInterval(actualizarCuentaAtras, 1000);
+function restartBrightness() {
+  cancelAnimationFrame(animation);
+  
+  const mainSection = document.getElementById('mainSection');
+  const contenido = document.getElementById('contenido');
+
+  if (mainSection) mainSection.innerHTML = '';
+  if (contenido) contenido.innerHTML = '';
+
+  // Iniciar una animación inversa para restaurar el brillo a 1
+  function animateRestore(timestamp, startTime) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / 1000, 1); // Progreso en 1 segundo
+
+      const currentBrightness = targetBrightness + (initialBrightness - targetBrightness) * progress;
+      document.body.style.filter = `sepia(0.75) brightness(${currentBrightness})`;
+
+      if (progress < 1) {
+          animation = requestAnimationFrame((ts) => animateRestore(ts, startTime));
+      }
+  }
+
+  animation = requestAnimationFrame((ts) => animateRestore(ts, ts));
+}
+
+
+// Inicializar brillo al cargar
+document.body.style.filter = `sepia(0.75) brightness(${initialBrightness})`;

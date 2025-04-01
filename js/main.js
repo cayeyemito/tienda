@@ -112,7 +112,7 @@ function validateLoginForm(event) {
         .then(text => {
             console.log("Respuesta completa:", text);
         })
-    .catch(error => console.error("Error:", error));
+        .catch(error => console.error("Error:", error));
 }
 
 function validateRegisterForm(event) {

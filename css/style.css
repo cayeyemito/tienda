@@ -235,3 +235,46 @@ body {
     transform: rotate(270deg);
   }
 }
+
+.header {
+  align-items: center; /* Asegura que los elementos dentro de .header se alineen verticalmente */
+  height: 15vh;
+  width: 100vw;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+.about, .menu, .icon, .pageName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Asegura que ocupe toda la altura del contenedor */
+}
+
+.about div,
+.menu div,
+.pageName div  {
+  text-align: center;
+  width: 100%;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+img{
+  filter: brightness(0) invert(1);
+  width: 46px;
+  height: 46px;
+}
+
+.mainContent {
+  align-items: center; /* Asegura que los elementos dentro de .header se alineen verticalmente */
+  height: 70vh;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  width: 100vw;
+  font-size: 500px;
+}
+
+.title{
+  color: black;
+}

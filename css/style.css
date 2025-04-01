@@ -31,7 +31,7 @@ body {
 	justify-content: center;
 	background-size: cover;
 	transition: var(--trsn);
-  background-color: grey;
+  	background-color: grey;
 }
 
 .content:before {

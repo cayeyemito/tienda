@@ -51,8 +51,6 @@ function restartBrightness() {
   if (mainSection) mainSection.innerHTML = '';
   if (contenido) contenido.innerHTML = '';
 
-  createMenuPrincipal();
-
   // Iniciar una animación inversa para restaurar el brillo a 1
   function animateRestore(timestamp, startTime) {
       if (!startTime) startTime = timestamp;

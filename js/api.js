@@ -1,54 +1,95 @@
 // URL de la API
 const apiUrlGenres = "https://api.themoviedb.org/3/genre/movie/list?language=es-ES";
 const apiUrlFilms = "https://api.themoviedb.org/3/movie/2?language=es-ES";
+const apiUrlCountries = "https://api.themoviedb.org/3/configuration/countries?language=es-ES"
+const apiUrlCompanies = "https://api.themoviedb.org/3/company/258136"
+let companies = []
+const companyRequests = [];
 
-// Token de autorización (Bearer)
+const companyId = 157609; // ID de la compañía
 const apiToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3Mjg0YzY0NThlOWZkOTljMjFhZGU0ODg1NjIyMTMwNCIsIm5iZiI6MTc0MzQ5NjEyMS45NzIsInN1YiI6IjY3ZWJhM2I5OWJiMjk1ZDZlYThiZWZmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jIArZ0mv9wUmlYTFLl27AKkm3nUAgxd-0d5zcjqUQsI';
 
-// Realizamos la solicitud a la API con el encabezado de autorización
-fetch(apiUrlFilms, {
-  method: 'GET', // Método GET
-  headers: {
-    'Authorization': `Bearer ${apiToken}`, // Enviamos el token de autorización
-    'Content-Type': 'application/json' // Indicamos que estamos esperando JSON
-  }
-})
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Error en la respuesta de la API');
+const maxID = 258136; // Última ID a consultar
+const batchSize = 1; // Número de peticiones simultáneas
+
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+async function fetchCompany(id) {
+  try {
+  const response = await fetch(`https://api.themoviedb.org/3/company/${id}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${apiToken}`,
+      'Content-Type': 'application/json'
     }
-    return response.json(); // Convertimos la respuesta a formato JSON
-  })
-  .then(data => {
-    console.log(data)
-
-    /*const languages = [];
-
-    // Extraemos los idiomas directamente del array
-    data.forEach(language => {
-    languages.push({ 
-        iso: language.iso_639_1, 
-        english_name: language.english_name, 
-        name: language.name 
-    });
-    });
-
-    console.log(languages);
-
-    // Enviar todos los idiomas a PHP en una sola solicitud POST
-    fetch("./php/addApiThings.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: "languages=" + encodeURIComponent(JSON.stringify(languages)) // Enviamos el arreglo completo
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log(data);  // Aquí puedes mostrar lo que devuelva el servidor
-    })
-    .catch(error => {
-        console.error('Hubo un problema con la solicitud POST:', error);
-    });*/
-  })
-  .catch(error => {
-    console.error('Hubo un problema con la solicitud de la API:', error); // Manejo de errores de la API
   });
+
+  if (!response.ok) {
+    throw new Error(`Compañía ${id} no encontrada.`);
+  }
+
+  const data = await response.json();
+  return {
+    id: data.id,
+    description: data.description || "",
+    headquarters: data.headquarters || "",
+    name: data.name || "Desconocido",
+    origin_country: data.origin_country || "N/A",
+    parent_company: data.parent_company?.name || null
+  };
+
+  } catch (error) {
+    console.error(error);
+    return null; // Devuelve null si hay error
+  }
+}
+
+async function fetchCompaniesInBatches() {
+  for (let i = 240001; i <= maxID; i += batchSize) {
+    const batchRequests = [];
+
+    // Crear un lote de promesas de fetch
+    for (let j = i; j < i + batchSize && j <= maxID; j++) {
+        batchRequests.push(fetchCompany(j));
+    }
+
+    // Esperar a que todas las solicitudes del lote terminen
+    const results = await Promise.allSettled(batchRequests);
+
+    // Filtrar resultados exitosos y agregarlos al array
+    companies.push(...results.filter(r => r.status === "fulfilled" && r.value).map(r => r.value));
+
+    console.log(`Completado hasta la ID: ${i + batchSize - 1}`);
+
+    // Enviar los datos al servidor después de cada lote
+    await sendCompaniesToServer();
+
+    // Esperar 500 ms entre lotes para evitar sobrecarga
+    await delay(1000);
+  }
+
+  console.log("Todas las compañías han sido procesadas.");
+}
+
+async function sendCompaniesToServer() {
+  if (companies.length === 0) return;
+
+  try {
+    const response = await fetch("./php/addApiThings.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: "companies=" + encodeURIComponent(JSON.stringify(companies))
+    });
+
+    const data = await response.text();
+    console.log("Respuesta del servidor:", data);
+
+    // Limpiar el array después de enviar los datos
+    companies = [];
+  } catch (error) {
+    console.error("Error en la solicitud POST:", error);
+  }
+}
+
+// Iniciar el proceso
+fetchCompaniesInBatches();

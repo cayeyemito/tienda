@@ -45,6 +45,8 @@ body{
 
 
 .container-2{
+    position: absolute;
+    top: 24vh;
     height: 75vh;
     width: 98vw;
     background-color: rgb(30, 30, 30);

@@ -291,14 +291,14 @@ img{
 }
 
 .title {
-    color: black;
-    text-align: center;
-    margin: -7px;
-    font-size: clamp(30px, 10vmin, 150px);
-    line-height: 1.2;
-    display: block;
-    width: 100%;
-    position: relative;
+  color: black;
+  text-align: center;
+  margin: -7px;
+  font-size: clamp(40px, 12vmin, 180px);
+  line-height: 1.2;
+  display: block;
+  width: 100%;
+  position: relative;
 	font-family: "Limelight", sans-serif;
 	letter-spacing: -0.06em;
 }
@@ -313,8 +313,9 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
-	padding-top: 13vh;
+	  padding-top: 8vh;
     min-height: 10vh;
+    z-index: 3;
 }
 
 /* Estilos generales para los botones */
@@ -363,30 +364,30 @@ img{
 }
 
 .iniciarSesion {
-    left: max(40vw, 10%);
+  left: max(40vw, 10%);
 }
 
 .registrarse {
-    right: max(40vw, 10%);
+  right: max(40vw, 10%);
 }
 
 .footer {
-	position: relative;
-	display: flex;
-    justify-content: center;
-    align-items: center;
-	padding-top: 13vh;
-    height: 70vh;
-    color: black;
-    font-family: 'Limelight', sans-serif;
-    width: 100vw;
-	font-size: clamp(16px, 2vw, 20px);
+  position: absolute;
+  padding-top: 68vh;
+  height: 70vh;
+  color: black;
+  font-family: 'Limelight', sans-serif;
+  width: 100vw;
+  font-size: clamp(16px, 2vw, 20px);
+  z-index: 1;
 }
 
 .footerText {
-    position: absolute; /* o simplemente eliminar la propiedad */
-    width: 100%;
-    margin: 0 auto;
-	top: 80vh;
-	left: max(32vw, 10%);
+  position: relative; /* Los centra en columna */
+  width: 80%;
+  max-width: 650px;
+  text-align: center;
+  margin: 0 auto; /* Asegura el centrado horizontal */
+  color: black;
+  font-size: 18px;
 }

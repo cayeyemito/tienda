@@ -1,6 +1,6 @@
 // URL de la API
 const apiUrlGenres = "https://api.themoviedb.org/3/genre/movie/list?language=es-ES";
-const apiUrlFilms = "https://api.themoviedb.org/3/movie/2?language=es-ES";
+const apiUrlFilms = "https://api.themoviedb.org/3/movie/12/videos";
 const apiUrlCountries = "https://api.themoviedb.org/3/configuration/countries?language=es-ES"
 const apiUrlCompanies = "https://api.themoviedb.org/3/movie/{movie_id}"
 let companies = []
@@ -19,7 +19,7 @@ async function obtenerCreditosPelicula(movieId) {
   try {
     const url = apiUrl.replace("{movie_id}", movieId);
 
-    const response = await fetch(url, {
+    const response = await fetch(apiUrlFilms, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${bearerToken}`,

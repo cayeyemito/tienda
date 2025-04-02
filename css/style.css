@@ -17,7 +17,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	background: var(--black);
-  filter: sepia(0.75); /* Aplica el filtro sepia directamente */
+  	filter: sepia(0.75);
 	perspective: 100vmin;
 }
 
@@ -236,15 +236,20 @@ body {
   }
 }
 
+.divAbsolut{
+	position: absolute;
+}
+
 .header {
   align-items: center; /* Asegura que los elementos dentro de .header se alineen verticalmente */
   height: 15vh;
   width: 100vw;
   color: white;
   font-family: 'Inter', sans-serif;
+  z-index: 3;
 }
 
-.about, .menu, .icon, .pageName {
+.about, .menu, .icon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -252,8 +257,7 @@ body {
 }
 
 .about div,
-.menu div,
-.pageName div  {
+.menu div{
   text-align: center;
   width: 100%;
   font-size: 15px;
@@ -267,14 +271,122 @@ img{
 }
 
 .mainContent {
-  align-items: center; /* Asegura que los elementos dentro de .header se alineen verticalmente */
-  height: 70vh;
-  color: white;
-  font-family: 'Inter', sans-serif;
-  width: 100vw;
-  font-size: 500px;
+    top: 15vh;
+    position: absolute;
+    height: 70vh;
+    color: white;
+    font-family: 'Limelight', sans-serif;
+    width: 100vw;
+	font-weight: lighter;
 }
 
-.title{
-  color: black;
+.pageName {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.title {
+    color: black;
+    text-align: center;
+    margin: -7px;
+    font-size: clamp(30px, 10vmin, 150px);
+    line-height: 1.2;
+    display: block;
+    width: 100%;
+    position: relative;
+	font-family: "Limelight", sans-serif;
+	letter-spacing: -0.06em;
+}
+
+.littleText{
+	font-size: clamp(20px, 7vmin, 120px);
+}
+
+.buttons {
+    position: relative; /* Contenedor relativo */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	padding-top: 13vh;
+    min-height: 10vh;
+}
+
+/* Estilos generales para los botones */
+.iniciarSesion, .registrarse {
+    position: absolute;
+    width: clamp(120px, 12vw, 180px); /* Tamaño adaptable */
+    height: clamp(40px, 5vh, 60px);
+    font-size: clamp(14px, 1.5vw, 18px);
+    border: 2px solid black;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    background-color: #BEAC81;
+    color: black;
+}
+
+.iniciarSesion:hover, .registrarse:hover {
+    background-color: #9c8d6b;
+    transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+    .iniciarSesion {
+        left: max(25vw, 5%);
+    }
+
+    .registrarse {
+        right: max(25vw, 5%);
+    }
+}
+
+/* En móviles, apila los botones */
+@media (max-width: 1800px) {
+    .buttons {
+        flex-direction: column;
+        gap: 2vh;
+    }
+
+    .iniciarSesion, .registrarse {
+        position: static; /* Los centra en columna */
+        width: 80%;
+        max-width: 250px;
+        text-align: center;
+    }
+}
+
+.iniciarSesion {
+    left: max(40vw, 10%);
+}
+
+.registrarse {
+    right: max(40vw, 10%);
+}
+
+.footer {
+	position: relative;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	padding-top: 13vh;
+    height: 70vh;
+    color: black;
+    font-family: 'Limelight', sans-serif;
+    width: 100vw;
+	font-size: clamp(16px, 2vw, 20px);
+}
+
+.footerText {
+    position: absolute; /* o simplemente eliminar la propiedad */
+    width: 100%;
+    margin: 0 auto;
+	top: 80vh;
+	left: max(32vw, 10%);
 }

@@ -48,7 +48,7 @@ function restartBrightness() {
   const mainSection = document.getElementById('mainSection');
   const contenido = document.getElementById('contenido');
 
-  if (mainSection) mainSection.innerHTML = '';
+  if (mainSection) mainSection.innerHTML = "<div class='container-fluid'><div class='col-12 header divAbsolut'><div class='col-1 offset-1 about'><div>ABOUT</div></div><div class='col-2 offset-5 icon'><img src='img/palomitas.png'></div><div class='col-1 offset-10 menu'><div>MENÚ</div></div></div><div class='mainContent divAbsolut'><div class='pageName'><p class='title littleText'>THE</p><p class='title'>WATCHNIGHT</p><p class='title'>SHOW</p><div class='buttons'><button class='iniciarSesion'>Iniciar sesión</button><button class='registrarse'>Registrarse</button></div></div></div></div><div class='footer divAbsolut'><div class='footerText'><p>The Watchnight Show es una comunidad abierta y sin ánimo de lucro</p></div></div>";
   if (contenido) contenido.innerHTML = '';
 
   // Iniciar una animación inversa para restaurar el brillo a 1

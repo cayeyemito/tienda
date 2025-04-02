@@ -2,7 +2,7 @@
 const apiUrlGenres = "https://api.themoviedb.org/3/genre/movie/list?language=es-ES";
 const apiUrlFilms = "https://api.themoviedb.org/3/movie/2?language=es-ES";
 const apiUrlCountries = "https://api.themoviedb.org/3/configuration/countries?language=es-ES"
-const apiUrlCompanies = "https://api.themoviedb.org/3/company/258136"
+const apiUrlCompanies = "https://api.themoviedb.org/3/movie/{movie_id}"
 let companies = []
 const companyRequests = [];
 
@@ -12,7 +12,36 @@ const apiToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3Mjg0YzY0NThlOWZkOTljMjFhZGU0O
 const maxID = 258136; // Última ID a consultar
 const batchSize = 1; // Número de peticiones simultáneas
 
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+const apiUrl = "https://api.themoviedb.org/3/person/5344086";
+const bearerToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3Mjg0YzY0NThlOWZkOTljMjFhZGU0ODg1NjIyMTMwNCIsIm5iZiI6MTc0MzQ5NjEyMS45NzIsInN1YiI6IjY3ZWJhM2I5OWJiMjk1ZDZlYThiZWZmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jIArZ0mv9wUmlYTFLl27AKkm3nUAgxd-0d5zcjqUQsI";
+
+async function obtenerCreditosPelicula(movieId) {
+  try {
+    const url = apiUrl.replace("{movie_id}", movieId);
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${bearerToken}`,
+        Accept: "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error en la petición: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log("Créditos de la película:", data);
+  } catch (error) {
+    console.error("Error al obtener los créditos:", error);
+  }
+}
+
+// Llamar a la función con un ID de película (ejemplo: 550 para Fight Club)
+obtenerCreditosPelicula(550);
+
+/*const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function fetchCompany(id) {
   try {
@@ -92,4 +121,4 @@ async function sendCompaniesToServer() {
 }
 
 // Iniciar el proceso
-fetchCompaniesInBatches();
+fetchCompaniesInBatches();*/

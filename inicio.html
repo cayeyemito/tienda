@@ -10,73 +10,55 @@
 <body>
 </head>
 <body>
-    <!-- Header con navbar transparente -->
+
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <div class="row w-100 align-items-center">
-                    <!-- Offset inicial -->
-                    <!-- <div class="col-1">
-                    </div> -->
-                    
-                    <!-- Logo ocupando 1 columna -->
+
                     <div class="col-1">
                         <a class="navbar-brand" href="#">
                             <img src="/api/placeholder/150/40" alt="Logo" class="logo">
                         </a>
                     </div>
                     
-                    <!-- Enlace INICIO ocupando 1 columna -->
                     <div class="col-1">
                         <a class="nav-link" href="#">INICIO</a>
                     </div>
                     
-                    <!-- Enlace FOROS ocupando 1 columna -->
                     <div class="col-1">
                         <a class="nav-link" href="#">FOROS</a>
                     </div>
                     
-                    <!-- Enlace MENSAJES ocupando 1 columna -->
                     <div class="col-1">
                         <a class="nav-link" href="#">MENSAJES</a>
                     </div>
                     
-                    <!-- Espacio hasta el buscador -->
                     <div class="col-4">
                     </div>
                     
-                    <!-- Buscador ocupando 2 columnas -->
                     <div class="col-3">
                         <form class="search-form" role="search" aria-label="Buscar en el sitio">
                             <input class="form-control" type="search" placeholder="Buscar" aria-label="Buscar">
                         </form>
                     </div>
                     
-                    <!-- ICON a la derecha del buscador -->
                     <div class="col-1">
                         <a class="nav-link icon" href="#" aria-label="Icono de usuario">Perfil</a>
                     </div>
-                    
-                    <!-- Margen derecho -->
-                    <!-- <div class="col-1">
-                    </div> -->
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- Sección principal con video de fondo (hero section) -->
     <section class="hero-section">
-        <!-- Video de fondo -->
         <video class="video-bg" autoplay muted loop>
             <source src="./video/02 (1).mp4" type="video/mp4">
             Tu navegador no soporta este video.
         </video>
         
-        <!-- Overlay oscuro para mejorar la visibilidad del texto -->
         <div class="overlay" aria-hidden="true"></div>
         
-        <!-- Contenido principal sobre el video -->
         <div class="container content">
             <h1 class="display-4">El Séptimo Club</h1>
             <p class="lead">Tu portal de películas antiguas favoritas</p>
@@ -85,7 +67,6 @@
     </section>
 
     <main id="contenido">
-        <!-- Segunda sección - Películas Populares con scroll horizontal -->
         <section id="peliculas-populares" class="movies-section">
             <p class="top-pelis">Peliculas Virales</p>
             <div class="container py-5">
@@ -97,15 +78,13 @@
                 </div>
             
                 
-                <!-- Contenedor con scroll horizontal para películas más vistas -->
                 <div class="movies-container" id="popular-movies">
-                    <!-- Espacio para películas que vendrán de la API -->
-                    <!-- Las películas se cargarán dinámicamente aquí -->
+                    <!-- Espacio para películas que vendrán de la BBDDD -->
+                    <!-- Las películas se cargarán aquí -->
                 </div>
             </div>
         </section>
                 
-                <!-- Subsección para películas premiadas (más pequeñas) -->
                 <section id="peliculas-populares" class="movies-section">
                         <div class="container py-5">
                             <div class="section-header">
@@ -117,7 +96,7 @@
                             </div>
                             
                             <div class="movies-container" id="award-movies">
-                                <!-- Espacio para películas premiadas que vendrán de la API -->
+                                <!-- Espacio para películas premiadas que vendrán de la BBDD perfecta -->
                                 <!-- Las películas premiadas se cargarán dinámicamente aquí -->
                             </div>
                         </div>
@@ -127,7 +106,6 @@
 
     <div class="word-carousel-container">
         <div class="word-carousel">
-            <!-- Duplicamos las palabras para crear efecto infinito -->
             <div class="carousel-word">COMUNIDADES</div>
             <div class="carousel-word">FOROS</div>
             <div class="carousel-word">PELÍCULAS</div>
@@ -135,7 +113,6 @@
             <div class="carousel-word">DEBATES</div>
             <div class="carousel-word">EVENTOS</div>
             <div class="carousel-word">RESEÑAS</div>
-            <!-- Duplicado para hacer el efecto continuo -->
             <div class="carousel-word">COMUNIDADES</div>
             <div class="carousel-word">FOROS</div>
             <div class="carousel-word">PELÍCULAS</div>
@@ -146,12 +123,10 @@
         </div>
     </div>
 
-        <!-- Sección de chats de grupos -->
         <section id="chat-grupos" class="chat-section">
             <div class="container">
                 <h2 class="text-center mb-5">Comenta tus películas favoritas con verdaderos cinéfilos </h2>
                 <div class="row">
-                    <!-- Chat de reseñas de películas -->
                     <div class="col-md-6 mb-4 mb-md-0">
                         <div class="chat-container film-reviews-chat">
                             <div class="chat-header">
@@ -223,7 +198,6 @@
                         </div>
                     </div>
                     
-                    <!-- Chat sobre directores -->
                     <div class="col-md-6">
                         <div class="chat-container directors-chat">
                             <div class="chat-header">

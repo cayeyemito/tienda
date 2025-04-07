@@ -1,5 +1,3 @@
-
-/* Estilos generales */
 body {
     margin: 0;
     padding: 0;
@@ -15,8 +13,6 @@ body {
     display: none;
 }
 
-
-/* Estilos para el header y navbar transparente */
 header {
     position: fixed;
     width: 100%;
@@ -49,7 +45,6 @@ header {
     height: 40px;
 }
 
-/* Estilos para la sección del video */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -124,7 +119,6 @@ header {
     margin-top: 1vh;
 }
 
-/* Estilos para el main y otras secciones */
 main {
     position: relative;
     z-index: 1;
@@ -134,7 +128,6 @@ section {
     padding: 0 0;
 }
 
-/* Estilos para la sección de películas con scroll horizontal */
 .movies-section {
     background-color: rgb(30, 30, 30);
     border-radius: 10px;
@@ -203,8 +196,6 @@ section {
     color: #ffc107;
     margin-right: 5px;
 }
-
-/* Estilos para películas premiadas (versión más pequeña) */
 
 h3{
     color: rgb(190, 172, 129);
@@ -331,7 +322,6 @@ h3::before{
     }
 }
 
-        /* Estilos para la sección de chats de grupo */
         .chat-section {
             padding: 2rem 0;
         }
@@ -466,7 +456,6 @@ h3::before{
             cursor: pointer;
         }
         
-        /* Estilos específicos para diferentes chats */
         .film-reviews-chat .chat-header {
             background-color: rgb(30, 30, 30);
         }

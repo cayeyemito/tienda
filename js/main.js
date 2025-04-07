@@ -62,7 +62,7 @@ function restartBrightness() {
     // Listener para registrarse (por si lo necesitas)
     document.querySelector('.registrarse')?.addEventListener('click', function(e) {
       e.preventDefault();
-      // Lógica para registro
+      document.querySelector('.register-popup').style.display = 'flex';
     });
   }, 0);
 
@@ -98,3 +98,58 @@ document.body.addEventListener('click', function(e) {
       document.querySelector('.login-popup').style.display = 'none';
     }
 });
+
+document.body.addEventListener('click', function(e) {
+  // Abrir popup
+  if(e.target.classList.contains('registrarse')) {
+    e.preventDefault();
+    document.querySelector('.register-popup').style.display = 'flex';
+  }
+  
+  // Cerrar popup
+  if(e.target.classList.contains('close-btn') || e.target.classList.contains('popup-overlay')) {
+    document.querySelector('.register-popup').style.display = 'none';
+  }
+});
+
+
+function showText(formType) {
+  const passHidden = document.getElementById(`${formType}-pass-hidden`);
+  const passVisible = document.getElementById(`${formType}-pass-visible`);
+  const eyeIcon = passHidden.closest('form')?.querySelector('.clickable-icon') || document.querySelector(`.clickable-icon`);
+
+  if (passHidden.classList.contains('active')) {
+    passVisible.value = passHidden.value;
+    passHidden.classList.remove('active');
+    passHidden.classList.add('inactive');
+    passVisible.classList.remove('inactive');
+    passVisible.classList.add('active');
+    passVisible.focus();
+    eyeIcon.src = 'img/ojo.png';
+  } else {
+    passHidden.value = passVisible.value;
+    passVisible.classList.remove('active');
+    passVisible.classList.add('inactive');
+    passHidden.classList.remove('inactive');
+    passHidden.classList.add('active');
+    passHidden.focus();
+    eyeIcon.src = 'img/ojo-abierto.png';
+  }
+}
+
+document.getElementById('pass-hidden').addEventListener('input', e => {
+  document.getElementById('pass-visible').value = e.target.value;
+});
+document.getElementById('pass-visible').addEventListener('input', e => {
+  document.getElementById('pass-hidden').value = e.target.value;
+});
+
+function openRegisterForm(){
+  document.querySelector('.login-popup').style.display = 'none';
+  document.querySelector('.register-popup').style.display = 'flex';
+}
+
+function openLoginForm(){
+  document.querySelector('.login-popup').style.display = 'flex';
+  document.querySelector('.register-popup').style.display = 'none';
+}

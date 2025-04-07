@@ -38,8 +38,57 @@
     <div class="login-popup">
         <div class="popup-overlay"></div>
         <div class="popup-container">
+            <div class="left-panel">
+                <div class="contentContainer">
+                    <h2 class="title2">¡Hola!</h2>
+                    <p class="subTitle">Inicia sesión en tu cuenta</p>
+                    <form class="login-form" action="/php/get_user.php">
+                        <input class="inputName" type="text" id="name" name="name" placeholder="Nombre de usuario"><br>
+                        <input class="inputPassword pos1 active" type="password" id="login-pass-hidden" name="password" placeholder="Contraseña"><br><br>
+                        <input type="text" class="inputPassword pos1 inactive" id="login-pass-visible" placeholder="Contraseña">
+                        <input class="inputButton" type="submit" value="INICIAR SESIÓN">
+                        <a class="forgotPassword" href="#">¿Contraseña olvidada?</a>
+                        <img src="img/ojo.png" alt="Search" class="icon-right pos1icon clickable-icon" onclick="showText('login')"/>
+                        <a class="goRegisterForm" onclick="openRegisterForm()">No tengo una cuenta</a>
+                    </form>
+                </div>
+            </div>
+            <div class="right-panel">
+                <div class="contentContainer">
+                    <h2 class="title3 reducedSpace">¡Bienvenid@ de vuelta!</h2>
+                    <p class="subText reducedSpace">Lorem ipsum sit amet pepe veintitres ipsum llati Lorem ipsum sit amet pepe veintitres ipsum llati lorena macu macu ipsum loremacue.</p>
+                </div>
+            </div>
+            <button class="close-btn">&times;</button>
+        </div>
+    </div>
 
-        <button class="close-btn">&times;</button>
+    <div class="register-popup">
+        <div class="popup-overlay"></div>
+        <div class="popup-container">
+            <div class="left-panel">
+                <div class="contentContainer">
+                    <h2 class="title2">¡Hola!</h2>
+                    <p class="subTitle">Crea tu cuenta</p>
+                    <form class="login-form" action="/php/get_user.php">
+                        <input class="inputName" type="text" id="name" name="name" placeholder="Nombre de usuario"><br>
+                        <input class="inputEmail" type="text" id="email" name="email" placeholder="Correo electrónico"><br>
+                        <input class="inputPassword pos2 active" type="password" id="register-pass-hidden" name="password" placeholder="Contraseña"><br><br>
+                        <input type="text" class="inputPassword pos2 inactive" id="register-pass-visible" placeholder="Contraseña">
+                        <input class="inputButton2" type="submit" value="CREAR CUENTA">
+                        <a class="termsAndConditions" href="#">Al crear una cuenta acepto los términos y condiciones</a>
+                        <img src="img/ojo.png" alt="Search" class="icon-right pos2icon clickable-icon" onclick="showText('register')"/>
+                        <a class="goRegisterForm" onclick="openLoginForm()">¿Ya tienes una cuenta? Iniciar sesión</a>
+                    </form>
+                </div>
+            </div>
+            <div class="right-panel">
+                <div class="contentContainer">
+                    <h2 class="title3 reducedSpace">¡Bienvenid@!</h2>
+                    <p class="subText reducedSpace">Lorem ipsum sit amet pepe veintitres ipsum llati Lorem ipsum sit amet pepe veintitres ipsum llati lorena macu macu ipsum loremacue.</p>
+                </div>
+            </div>
+            <button class="close-btn">&times;</button>
         </div>
     </div>
     

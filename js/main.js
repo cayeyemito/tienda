@@ -64,6 +64,37 @@ function restartBrightness() {
       e.preventDefault();
       document.querySelector('.register-popup').style.display = 'flex';
     });
+
+    document.getElementById("register-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+    
+      // Obtener el valor de la contraseña visible o la oculta (según cuál esté activa)
+      const passHidden = document.getElementById("register-pass-hidden");
+      const passVisible = document.getElementById("register-pass-visible");
+    
+      const passwordValue = passHidden.classList.contains("active") 
+          ? passHidden.value 
+          : passVisible.value;
+    
+      // Actualizar el valor en el input con name="password" antes de enviar
+      const password = passwordValue;
+      const email = document.getElementById('email').value
+      const nombre = document.getElementById('registerName').value
+      
+      console.log(password, email, nombre)
+
+      fetch('/php/get_user.php', {
+          method: 'POST',
+          body: formData
+      })
+      .then(res => res.text())
+      .then(data => {
+          console.log("Respuesta del servidor:", data);
+      })
+      .catch(err => {
+          console.error("Error:", err);
+      });
+    });
   }, 0);
 
   // Iniciar una animación inversa para restaurar el brillo a 1
@@ -137,11 +168,11 @@ function showText(formType) {
   }
 }
 
-document.getElementById('pass-hidden').addEventListener('input', e => {
-  document.getElementById('pass-visible').value = e.target.value;
+document.getElementById('register-pass-hidden').addEventListener('input', e => {
+  document.getElementById('register-pass-visible').value = e.target.value;
 });
-document.getElementById('pass-visible').addEventListener('input', e => {
-  document.getElementById('pass-hidden').value = e.target.value;
+document.getElementById('login-pass-visible').addEventListener('input', e => {
+  document.getElementById('login-pass-hidden').value = e.target.value;
 });
 
 function openRegisterForm(){

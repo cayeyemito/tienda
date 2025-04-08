@@ -4,36 +4,57 @@ ini_set('display_errors', 1);
 include 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST["nombre"];
-    $correo = $_POST["correo"];
-    $fechaNacimiento = $_POST["fechaNacimiento"];
-    $contrasenya = $_POST["contrasenya"];
-    $telefono = $_POST["telefono"];
 
+    if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
+    }
+    // Recogemos los datos enviados desde el formulario
+    $nombre = $_POST["name"];    // 'name' corresponde al nombre del input
+    $correo = $_POST["email"];   // 'email' corresponde al nombre del input
+    $contrasenya = $_POST["password"];  // 'password' corresponde al nombre del input
+
+    error_log("Nombre: " . $nombre);
+    error_log("Correo: " . $correo);
+    error_log("Contraseña: " . $contrasenya);
+
+    // Verificamos que todos los campos estén completos
+    if (empty($nombre) || empty($correo) || empty($contrasenya)) {
+        echo json_encode(["status" => "error", "message" => "Todos los campos son obligatorios."]);
+        exit();
+    }
+
+    // Comprobamos si el correo ya está registrado
     $stmt = $conn->prepare("SELECT nombre FROM Usuarios WHERE correo = ?");
     $stmt->bind_param("s", $correo);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        echo "Error: El correo ya está registrado.";
+        echo json_encode(["status" => "error", "message" => "El correo ya está registrado."]);
         $stmt->close();
         $conn->close();
         exit();
     }
     $stmt->close();
 
+    // Hasheamos la contraseña
     $hash_contraseña = password_hash($contrasenya, PASSWORD_BCRYPT);
 
-    $stmt = $conn->prepare("INSERT INTO Usuarios (nombre, correo, fechaNacimiento, contrasenya, telefono) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $nombre, $correo, $fechaNacimiento, $hash_contraseña, $telefono);
+    // Insertamos el nuevo usuario en la base de datos
+    $stmt = $conn->prepare("INSERT INTO Usuarios (nombre, correo, contrasenya) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $nombre, $correo, $hash_contraseña);
 
     if ($stmt->execute()) {
-        echo "Usuario registrado correctamente.";
+        echo json_encode(["status" => "success", "message" => "Usuario registrado correctamente."]);
     } else {
-        echo "Error al registrar: " . $conn->error;
+        echo json_encode(["status" => "error", "message" => "Error al registrar: " . $conn->error]);
     }
 
     $stmt->close();
     $conn->close();
+    // Al final de tu archivo PHP, asegúrate de que siempre devuelvas una respuesta JSON
+    header('Content-Type: application/json');
+    echo json_encode(["status" => "success", "message" => "Usuario registrado correctamente."]);
+
 }
+?>

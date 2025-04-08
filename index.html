@@ -42,8 +42,8 @@
                 <div class="contentContainer">
                     <h2 class="title2">¡Hola!</h2>
                     <p class="subTitle">Inicia sesión en tu cuenta</p>
-                    <form class="login-form" action="/php/get_user.php">
-                        <input class="inputName" type="text" id="name" name="name" placeholder="Nombre de usuario"><br>
+                    <form class="login-form" id="login-form">
+                        <input class="inputName" type="text" id="name" name="correo" placeholder="Correo del usuario" required autocomplete="off"><br>
                         <input class="inputPassword pos1 active" type="password" id="login-pass-hidden" name="password" placeholder="Contraseña"><br><br>
                         <input type="text" class="inputPassword pos1 inactive" id="login-pass-visible" placeholder="Contraseña">
                         <input class="inputButton" type="submit" value="INICIAR SESIÓN">
@@ -70,9 +70,9 @@
                 <div class="contentContainer">
                     <h2 class="title2">¡Hola!</h2>
                     <p class="subTitle">Crea tu cuenta</p>
-                    <form class="login-form" action="/php/get_user.php">
-                        <input class="inputName" type="text" id="name" name="name" placeholder="Nombre de usuario"><br>
-                        <input class="inputEmail" type="text" id="email" name="email" placeholder="Correo electrónico"><br>
+                    <form class="login-form" id="register-form">
+                        <input class="inputName" type="text" id="registerName" name="name" placeholder="Nombre de usuario" required autocomplete="off"><br>
+                        <input class="inputEmail" type="text" id="email" name="email" placeholder="Correo electrónico" required autocomplete="off"><br>
                         <input class="inputPassword pos2 active" type="password" id="register-pass-hidden" name="password" placeholder="Contraseña"><br><br>
                         <input type="text" class="inputPassword pos2 inactive" id="register-pass-visible" placeholder="Contraseña">
                         <input class="inputButton2" type="submit" value="CREAR CUENTA">

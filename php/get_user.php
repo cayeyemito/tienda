@@ -2,55 +2,58 @@
 include 'db.php';
 
 header('Content-Type: application/json');
-error_reporting(E_ALL); // Añadir para debug
+error_reporting(E_ALL); // Para mostrar todos los errores
 ini_set('display_errors', 1); // Mostrar errores en pantalla
 
+// Inicializamos la respuesta
 $response = [];
 
 // Verifica que se hayan recibido los parámetros por POST
-if (isset($_POST["correo"]) && isset($_POST["contrasenya"])) {
-    $correo = $_POST["correo"];
-    $password = $_POST["contrasenya"];
+if (isset($_POST["email"]) && isset($_POST["password"])) {
 
-    try {
-        // Verificar conexión a la base de datos
-        if ($conexion->connect_error) {
-            throw new Exception("Error de conexión: " . $conexion->connect_error);
-        }
-
-        $sql = "SELECT contrasenya FROM usuarios WHERE correo = ?";
-        $stmt = $conexion->prepare($sql);
-        
-        if (!$stmt) {
-            throw new Exception("Error en preparación: " . $conexion->error);
-        }
-
-        $stmt->bind_param("s", $correo);
-        
-        if (!$stmt->execute()) {
-            throw new Exception("Error en ejecución: " . $stmt->error);
-        }
-        
-        $stmt->bind_result($hash_guardado);
-        $stmt->fetch();
-        $stmt->close();
-
-        if ($hash_guardado && password_verify($password, $hash_guardado)) {
-            $response['status'] = 'success';
-            $response['message'] = 'Acceso correcto';
-        } else {
-            $response['status'] = 'error';
-            $response['message'] = 'Credenciales inválidas';
-        }
-    } catch (Exception $e) {
-        $response['status'] = 'error';
-        $response['message'] = 'Error: ' . $e->getMessage();
+    if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
     }
-} else {
-    $response['status'] = 'error';
-    $response['message'] = 'Parámetros faltantes';
+
+    $correo = $_POST["email"];
+    $contrasenya = $_POST["password"];
+
+    $stmt = $conn->prepare("SELECT contrasenya, nombre FROM Usuarios WHERE correo = ?");
+    $stmt->bind_param("s", $correo);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($contrasenya_guardada, $nombre);
+        $stmt->fetch();
+
+        if(password_verify($contrasenya, $contrasenya_guardada)){
+            $response = [
+                "status" => "success",
+                "message" => "Inicio de sesión exitoso.",
+                "usuario" => [
+                    "nombre" => $nombre
+                ]
+            ];
+        } else {
+            $response = [
+                "status" => "error",
+                "message" => "Contraseña incorrecta."
+            ];
+        }
+    } else {
+        $response = [
+            "status" => "error",
+            "message" => "El usuario no existe."
+        ];
+    }
 }
 
+// Cerramos la declaración y la conexión
+$stmt->close();
+$conn->close();
+
+// Enviamos la respuesta en formato JSON
 echo json_encode($response);
-$conexion->close();
+exit();
 ?>

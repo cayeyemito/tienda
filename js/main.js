@@ -3,6 +3,7 @@ let count = 5;
 let animation;
 const initialBrightness = 1; // Valor inicial del brillo
 const targetBrightness = 0; // Valor final del brillo (más oscuro)
+let isCounting = true;
 
 function updateBackground(progress) {
     const currentBrightness = initialBrightness - (initialBrightness - targetBrightness) * progress;
@@ -28,11 +29,14 @@ function startAnimation() {
 
 // Modifica tu temporizador
 const timer = setInterval(() => {
+  if (!isCounting) return;
+
   count--;
   document.getElementById('cuentaAtras').textContent = count;
 
   if (count <= 0) {
       clearInterval(timer);
+      isCounting = false;
       startAnimation();
 
       // Restaurar brillo después de la animación
@@ -41,6 +45,20 @@ const timer = setInterval(() => {
       }, 1000);
   }
 }, 1000);
+
+document.body.addEventListener('click', function() {
+  if (isCounting) { // Solo permitir saltar la cuenta atrás si está en curso
+      isCounting = false;
+      clearInterval(timer); // Detenemos la cuenta atrás
+
+      // Saltamos a la siguiente parte (animación)
+      startAnimation();
+
+      setTimeout(() => {
+          restartBrightness();
+      }, 1000);
+  }
+});
 
 function restartBrightness() {
   cancelAnimationFrame(animation);
@@ -80,16 +98,97 @@ function restartBrightness() {
       const password = passwordValue;
       const email = document.getElementById('email').value
       const nombre = document.getElementById('registerName').value
+
+      if (!nombre || nombre.trim() === "") {
+        alert("Por favor, ingresa un nombre.");
+        return;
+      }
+
+      if (!email || !validateEmail(email)) {
+        alert("Por favor, ingresa un correo electrónico válido.");
+        return;
+      }
+
+      if (!passwordValue || passwordValue.length < 6) {
+          alert("La contraseña debe tener al menos 6 caracteres.");
+          return;
+      }
       
-      console.log(password, email, nombre)
+      const body = `password=${encodeURIComponent(password)}&email=${encodeURIComponent(email)}&nombre=${encodeURIComponent(nombre)}`;
+
+      fetch('/php/save_user.php', {
+        method: 'POST',
+        body: body,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'  // Asegúrate de especificar el tipo de contenido
+        }
+      })
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        if (data.status === "error" && data.message === "El correo ya está registrado.") {
+          alert("Este correo ya está registrado. Por favor, usa otro.");
+        } else if (data.status === "success") {
+          alert("Usuario registrado correctamente.");
+          document.querySelector('.register-popup').style.display = 'none';
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch(err => {
+          console.error("Error:", err);
+      });
+    });
+
+    document.getElementById("login-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+    
+      // Obtener el valor de la contraseña visible o la oculta (según cuál esté activa)
+      const passHidden = document.getElementById("login-pass-hidden");
+      const passVisible = document.getElementById("login-pass-visible");
+    
+      const passwordValue = passHidden.classList.contains("active") 
+          ? passHidden.value 
+          : passVisible.value;
+    
+      // Actualizar el valor en el input con name="password" antes de enviar
+      const password = passwordValue;
+      const email = document.getElementById('loginEmail').value
+
+      if (!email || !validateEmail(email)) {
+        alert("Por favor, ingresa un correo electrónico válido.");
+        return;
+      }
+
+      if (!passwordValue || passwordValue.length < 6) {
+          alert("La contraseña debe tener al menos 6 caracteres.");
+          return;
+      }
+      
+      const body = `password=${encodeURIComponent(password)}&email=${encodeURIComponent(email)}`;
 
       fetch('/php/get_user.php', {
-          method: 'POST',
-          body: formData
+        method: 'POST',
+        body: body,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'  // Asegúrate de especificar el tipo de contenido
+        }
       })
-      .then(res => res.text())
+      .then(res => {
+        return res.json();
+      })
       .then(data => {
-          console.log("Respuesta del servidor:", data);
+        if(data.status === 'success'){
+          alert(`Bienvenido de vuelta ${data.usuario.nombre}`);
+          document.querySelector('.login-popup').style.display = 'none';
+        } else if(data.status === 'error'){
+          if(data.message === 'Contraseña incorrecta.'){
+            alert(`La contraseña no es correcta`);
+          } else if(data.message === 'El usuario no existe.'){
+            alert(`Ese usuario no existe`);
+          }  
+        }
       })
       .catch(err => {
           console.error("Error:", err);
@@ -183,4 +282,9 @@ function openRegisterForm(){
 function openLoginForm(){
   document.querySelector('.login-popup').style.display = 'flex';
   document.querySelector('.register-popup').style.display = 'none';
+}
+
+function validateEmail(email) {
+  const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return re.test(email);
 }

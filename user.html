@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario - The Watchnight Show</title>
+    <link rel="stylesheet" href="css/user.css"> <!-- Enlaza tu CSS existente -->
+</head>
+<body>
+    <div class="user-profile-container">
+        <!-- Cabecera del perfil -->
+        <div class="profile-header movies-section">
+            <div class="avatar-container">
+                <img src="img/avatar-default.png" alt="Avatar" class="user-avatar">
+                <button class="btn-edit-avatar">Cambiar avatar</button>
+            </div>
+            <h1 class="profile-title">Perfil de <span id="username">Usuario</span></h1>
+        </div>
+
+        <!-- Información principal -->
+        <div class="profile-info movies-section">
+            <form id="userProfileForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" disabled>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" class="form-control" disabled>
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha-registro">Miembro desde</label>
+                    <input type="text" id="fecha-registro" class="form-control" disabled>
+                </div>
+
+                <div class="form-group">
+                    <label for="bio">Biografía</label>
+                    <textarea id="bio" name="bio" class="form-control" rows="3" disabled></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-inicio" id="btnEdit">Editar perfil</button>
+                    <button type="submit" class="btn-inicio" id="btnSave" style="display: none;">Guardar cambios</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Sección de seguridad -->
+        <div class="security-section movies-section">
+            <h2><i class="icon-lock"></i> Seguridad</h2>
+            <div class="security-item">
+                <span>Contraseña</span>
+                <button class="btn-change-password btn-inicio">Cambiar contraseña</button>
+            </div>
+            <div class="security-item">
+                <span>Sesiones activas</span>
+                <div class="sessions-list" id="activeSessions"></div>
+            </div>
+        </div>
+
+        <!-- Notificaciones -->
+        <div class="notifications movies-section">
+            <h2>Preferencias</h2>
+            <div class="preference-item">
+                <label>
+                    <input type="checkbox" name="notifications" class="form-check-input">
+                    Recibir notificaciones por email
+                </label>
+            </div>
+            <div class="preference-item">
+                <label>
+                    <input type="checkbox" name="newsletter" class="form-check-input">
+                    Recibir newsletter semanal
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulación de datos de la API
+        const mockUserData = {
+            nombre: "Juan Pérez",
+            email: "juan@example.com",
+            fechaRegistro: "15 Marzo 2023",
+            bio: "Amante del cine clásico y las películas independientes.",
+            preferences: {
+                notifications: true,
+                newsletter: false
+            }
+        };
+
+        // Cargar datos del usuario
+        function loadUserData() {
+            document.getElementById('nombre').value = mockUserData.nombre;
+            document.getElementById('email').value = mockUserData.email;
+            document.getElementById('fecha-registro').value = mockUserData.fechaRegistro;
+            document.getElementById('bio').value = mockUserData.bio;
+            document.querySelector('[name="notifications"]').checked = mockUserData.preferences.notifications;
+            document.querySelector('[name="newsletter"]').checked = mockUserData.preferences.newsletter;
+        }
+
+        // Habilitar edición
+        document.getElementById('btnEdit').addEventListener('click', () => {
+            const inputs = document.querySelectorAll('#userProfileForm input, #userProfileForm textarea');
+            inputs.forEach(input => input.disabled = false);
+            document.getElementById('btnEdit').style.display = 'none';
+            document.getElementById('btnSave').style.display = 'inline-block';
+        });
+
+        // Guardar cambios
+        document.getElementById('userProfileForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Aquí iría la llamada a la API para guardar los cambios
+            alert('Cambios guardados exitosamente');
+            location.reload();
+        });
+
+        // Cargar datos al iniciar
+        window.addEventListener('DOMContentLoaded', loadUserData);
+    </script>
+</body>
+</html>

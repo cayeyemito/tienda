@@ -109,8 +109,8 @@ function restartBrightness() {
         return;
       }
 
-      if (!passwordValue || passwordValue.length < 6) {
-          alert("La contraseña debe tener al menos 6 caracteres.");
+      if (!passwordValue || passwordValue.length < 3) {
+          alert("La contraseña debe tener al menos 3 caracteres.");
           return;
       }
       
@@ -131,7 +131,7 @@ function restartBrightness() {
           alert("Este correo ya está registrado. Por favor, usa otro.");
         } else if (data.status === "success") {
           alert("Usuario registrado correctamente.");
-          document.querySelector('.register-popup').style.display = 'none';
+          window.location.href = "inicio.html";
         } else {
           alert(data.message);
         }
@@ -161,8 +161,8 @@ function restartBrightness() {
         return;
       }
 
-      if (!passwordValue || passwordValue.length < 6) {
-          alert("La contraseña debe tener al menos 6 caracteres.");
+      if (!passwordValue || passwordValue.length < 3) {
+          alert("La contraseña debe tener al menos 3 caracteres.");
           return;
       }
       
@@ -181,7 +181,8 @@ function restartBrightness() {
       .then(data => {
         if(data.status === 'success'){
           alert(`Bienvenido de vuelta ${data.usuario.nombre}`);
-          document.querySelector('.login-popup').style.display = 'none';
+          const emailCodificado = btoa(email)
+          window.location.href = `inicio.html?email=${emailCodificado}`;
         } else if(data.status === 'error'){
           if(data.message === 'Contraseña incorrecta.'){
             alert(`La contraseña no es correcta`);

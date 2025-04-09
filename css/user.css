@@ -1,0 +1,86 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #1E1E1E;
+}
+
+.user-profile-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.profile-header {
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.user-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #BEAC81;
+    margin-bottom: 1rem;
+}
+
+.profile-title {
+    color: #BEAC81;
+    font-size: 2.5rem;
+    margin: 1rem 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: #BEAC81;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.form-control {
+    background-color: rgb(30, 30, 30);
+    border: 1px solid rgb(49, 49, 49);
+    color: white;
+    padding: 0.8rem;
+    width: 100%;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #BEAC81;
+    box-shadow: 0 0 0 3px rgba(190, 172, 129, 0.2);
+}
+
+.form-actions {
+    text-align: right;
+    margin-top: 2rem;
+}
+
+.security-section .security-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid rgb(49, 49, 49);
+}
+
+.preference-item {
+    padding: 1rem;
+    border-bottom: 1px solid rgb(49, 49, 49);
+}
+
+.btn-change-password {
+    background-color: transparent;
+    border: 1px solid #BEAC81;
+    color: #BEAC81;
+}
+
+.btn-change-password:hover {
+    background-color: #BEAC81;
+    color: rgb(22, 22, 22);
+}

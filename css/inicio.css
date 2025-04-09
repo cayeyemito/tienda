@@ -1,0 +1,473 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif;
+    background-color: rgb(22, 22, 22)!important;
+}
+
+* {
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar {
+    background-color: transparent;
+    padding: 15px 0;
+    transition: background 0.3s ease;
+    border-bottom: 1px solid rgb(190, 172, 129);
+}
+
+.navbar.blur {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.navbar .nav-link {
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: rgb(190, 172, 129);
+}
+
+.navbar .navbar-brand img {
+    height: 40px;
+}
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.content {
+    color: white;
+    text-align: center;
+    z-index: 1;
+    padding: 1rem;
+}
+
+.search-form {
+    width: 100%;
+    color: white;
+}
+
+.form-control{
+    background-color: transparent ;
+    border: 1px solid rgb(30, 30, 30);
+    color: white;
+    border-radius: 10px;
+}
+
+.form-control:focus{
+    background-color: transparent;
+    color: white;
+    border-color: rgb(190, 172, 129);
+    box-shadow: 0 0 0 .15rem rgb(199, 186, 156, 0.5);
+}
+
+.icon {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.lead{
+    margin-bottom: 10vh;
+}
+
+.btn-inicio{
+    text-decoration: none;
+    background-color: rgb(190, 172, 129);
+    border-radius: 10px;
+    color: rgb(22, 22, 22);
+    padding: 15px;
+    margin-top: 1vh;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+section {
+    padding: 0 0;
+}
+
+.movies-section {
+    background-color: rgb(30, 30, 30);
+    border-radius: 10px;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.movies-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.movies-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.movies-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.movies-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.movies-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.movie-card {
+    flex: 0 0 auto;
+    width: 250px;
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+}
+
+.movie-poster {
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.movie-title {
+    font-weight: bold;
+    margin: 10px 0 5px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    height: 48px;
+}
+
+.movie-rating {
+    color: #ffc107;
+    margin-right: 5px;
+}
+
+h3{
+    color: rgb(190, 172, 129);
+    align-items: center;
+    display: flex;
+}
+
+h3::before{
+    content: "|";
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+.award-movie-card {
+    flex: 0 0 auto;
+    width: 180px;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.award-movie-card:hover {
+    transform: translateY(-5px);
+}
+
+.award-movie-poster {
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.award-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: goldenrod;
+    color: white;
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+.scroll-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.scroll-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.scroll-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.top-pelis{
+    text-align: center;
+    background-color: rgb(190, 172, 129);
+    padding: 5px;
+    width: 15vw;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.3rem;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.word-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: transparent;
+    padding: 20px 0;
+    position: relative;
+    border-top: 1px solid rgb(190, 172, 129);
+    border-bottom: 1px solid rgb(190, 172, 129);
+
+}
+
+.word-carousel {
+    display: flex;
+    white-space: nowrap;
+    animation: scrollWords 60s linear infinite;
+}
+
+.carousel-word {
+    display: inline-block;
+    color: rgb(190, 172, 129);
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 0 60px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-word:hover {
+    opacity: 1;
+}
+
+@keyframes scrollWords {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.chat-section {
+    padding: 2rem 0;
+}
+
+h2{
+    color: rgb(185, 185, 185);
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.chat-container {
+    background-color: rgb(49, 49, 49);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: 450px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    background-color: #3a3a3a;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.chat-members {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.chat-body {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    max-width: 80%;
+}
+
+.message-received {
+    align-self: flex-start;
+}
+
+.message-sent {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 10px;
+    object-fit: cover;
+}
+
+.message-content {
+    background-color: rgb(22, 22, 22);
+    border-radius: 18px;
+    padding: 12px 15px;
+    position: relative;
+    font-size: 0.95rem;
+    color: white;
+}
+
+.message-sent .message-content {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    color: white;
+}
+
+.message-time {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.chat-footer {
+    padding: 15px;
+    border-top: 1px solid rgb(190, 172, 129);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-input {
+    flex-grow: 1;
+    border: 1px solid rgb(190, 172, 129);
+    border-radius: 20px;
+    padding: 8px 15px;
+    outline: none;
+    background-color: rgb(30, 30, 30);
+}
+
+.chat-input:focus {
+    border-color: #0d6efd;
+}
+
+.send-btn {
+    background-color: rgb(190, 172, 129);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.film-reviews-chat .chat-header {
+    background-color: rgb(30, 30, 30);
+}
+
+.film-reviews-chat .message-sent .message-content {
+    background-color: #6a1b9a;
+}
+
+.directors-chat .chat-header {
+    background-color: rgb(30, 30, 30);
+}
+
+.directors-chat .message-sent .message-content {
+    background-color: #285393;
+}

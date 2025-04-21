@@ -3,82 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario - The Watchnight Show</title>
-    <link rel="stylesheet" href="css/user.css"> <!-- Enlaza tu CSS existente -->
+    <title>Configuración</title>
+    <link rel="stylesheet" href="css/user.css">
 </head>
 <body>
-    <div class="user-profile-container">
-        <!-- Cabecera del perfil -->
-        <div class="profile-header movies-section">
-            <div class="avatar-container">
-                <img src="img/avatar-default.png" alt="Avatar" class="user-avatar">
-                <button class="btn-edit-avatar">Cambiar avatar</button>
-            </div>
-            <h1 class="profile-title">Perfil de <span id="username">Usuario</span></h1>
+    <header>
+        <div class="container">
+            <h1>Configuración de Perfil</h1>
         </div>
-
-        <!-- Información principal -->
-        <div class="profile-info movies-section">
-            <form id="userProfileForm">
-                <div class="form-group">
-                    <label for="nombre">Nombre completo</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control" disabled>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" class="form-control" disabled>
-                </div>
-
-                <div class="form-group">
-                    <label for="fecha-registro">Miembro desde</label>
-                    <input type="text" id="fecha-registro" class="form-control" disabled>
-                </div>
-
-                <div class="form-group">
-                    <label for="bio">Biografía</label>
-                    <textarea id="bio" name="bio" class="form-control" rows="3" disabled></textarea>
-                </div>
-
-                <div class="form-actions">
-                    <button type="button" class="btn-inicio" id="btnEdit">Editar perfil</button>
-                    <button type="submit" class="btn-inicio" id="btnSave" style="display: none;">Guardar cambios</button>
-                </div>
-            </form>
-        </div>
-
-        <!-- Sección de seguridad -->
-        <div class="security-section movies-section">
-            <h2><i class="icon-lock"></i> Seguridad</h2>
-            <div class="security-item">
-                <span>Contraseña</span>
-                <button class="btn-change-password btn-inicio">Cambiar contraseña</button>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Información Personal</h2>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" value="">
             </div>
-            <div class="security-item">
-                <span>Sesiones activas</span>
-                <div class="sessions-list" id="activeSessions"></div>
+            
+            <div class="form-group">
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" value="">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" value="">
+            </div>
+            
+            <div class="form-group">
+                <label>Miembro desde</label>
+                <div class="membership" id="miembro-desde"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="biografia">Biografía</label>
+                <textarea id="biografia"></textarea>
+            </div>
+            
+            <div class="save-section">
+                <button id="guardar-perfil">Guardar Cambios</button>
             </div>
         </div>
-
-        <!-- Notificaciones -->
-        <div class="notifications movies-section">
-            <h2>Preferencias</h2>
-            <div class="preference-item">
-                <label>
-                    <input type="checkbox" name="notifications" class="form-check-input">
-                    Recibir notificaciones por email
-                </label>
+        
+        <div class="card">
+            <h2>Seguridad</h2>
+            <div class="password-actions">
+                <div>Contraseña</div>
+                <button id="cambiar-password">Cambiar Contraseña</button>
             </div>
-            <div class="preference-item">
-                <label>
-                    <input type="checkbox" name="newsletter" class="form-check-input">
-                    Recibir newsletter semanal
-                </label>
+            
+            <div class="change-password-form" id="form-password">
+                <div class="form-group">
+                    <label for="password-actual">Contraseña Actual</label>
+                    <input type="password" id="password-actual">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password-nueva">Nueva Contraseña</label>
+                    <input type="password" id="password-nueva">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmar-password">Confirmar Nueva Contraseña</label>
+                    <input type="password" id="confirmar-password">
+                </div>
+                
+                <div class="save-section">
+                    <button id="guardar-password">Actualizar Contraseña</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Preferencias de Comunicación</h2>
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="alertas-email">
+                    <label for="alertas-email">Recibir alertas por correo electrónico</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="newsletter">
+                    <label for="newsletter">Suscribirse al newsletter</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="notificaciones-promociones">
+                    <label for="notificaciones-promociones">Recibir notificaciones de promociones</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="notificaciones-eventos">
+                    <label for="notificaciones-eventos">Recibir notificaciones de eventos</label>
+                </div>
+            </div>
+            
+            <div class="save-section">
+                <button id="guardar-preferencias">Guardar Preferencias</button>
             </div>
         </div>
     </div>
 
     <script>
+        // Simulación de datos de la API
+        const userData = {
+            nombre: "María González",
+            usuario: "maria_gonzalez",
+            email: "maria.gonzalez@ejemplo.com",
+            miembroDesde: "15 de marzo de 2023",
+            biografia: "Soy una apasionada diseñadora gráfica con 5 años de experiencia en el sector. Me encanta crear interfaces limpias e intuitivas y compartir mi conocimiento con la comunidad.",
+            preferencias: {
+                alertasEmail: true,
+                newsletter: false,
+                notificacionesPromociones: true,
+                notificacionesEventos: false
+            }
+        };
+
+        // Cargar datos de usuario
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar datos del perfil
+            document.getElementById('nombre').value = userData.nombre;
+            document.getElementById('usuario').value = userData.usuario;
+            document.getElementById('email').value = userData.email;
+            document.getElementById('miembro-desde').textContent = userData.miembroDesde;
+            document.getElementById('biografia').value = userData.biografia;
+            
+            // Cargar preferencias
+            document.getElementById('alertas-email').checked = userData.preferencias.alertasEmail;
+            document.getElementById('newsletter').checked = userData.preferencias.newsletter;
+            document.getElementById('notificaciones-promociones').checked = userData.preferencias.notificacionesPromociones;
+            document.getElementById('notificaciones-eventos').checked = userData.preferencias.notificacionesEventos;
+            
+            // Evento para mostrar/ocultar el formulario de cambio de contraseña
+            document.getElementById('cambiar-password').addEventListener('click', function() {
+                document.getElementById('form-password').classList.toggle('show');
+            });
+            
+            // Eventos para los botones de guardar
+            document.getElementById('guardar-perfil').addEventListener('click', function() {
+                alert('Perfil actualizado correctamente');
+            });
+            
+            document.getElementById('guardar-password').addEventListener('click', function() {
+                const passwordActual = document.getElementById('password-actual').value;
+                const passwordNueva = document.getElementById('password-nueva').value;
+                const confirmarPassword = document.getElementById('confirmar-password').value;
+                
+                if (!passwordActual || !passwordNueva || !confirmarPassword) {
+                    alert('Por favor, complete todos los campos');
+                    return;
+                }
+                
+                if (passwordNueva !== confirmarPassword) {
+                    alert('Las contraseñas no coinciden');
+                    return;
+                }
+                
+                alert('Contraseña actualizada correctamente');
+                document.getElementById('form-password').classList.remove('show');
+                document.getElementById('password-actual').value = '';
+                document.getElementById('password-nueva').value = '';
+                document.getElementById('confirmar-password').value = '';
+            });
+            
+            document.getElementById('guardar-preferencias').addEventListener('click', function() {
+                alert('Preferencias actualizadas correctamente');
+            });
+        });
+    </script>
+</body>
+</html>
+
+    <!-- <script>
         // Simulación de datos de la API
         const mockUserData = {
             nombre: "Juan Pérez",
@@ -119,6 +217,6 @@
 
         // Cargar datos al iniciar
         window.addEventListener('DOMContentLoaded', loadUserData);
-    </script>
+    </script> -->
 </body>
 </html>

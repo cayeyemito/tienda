@@ -9,11 +9,41 @@
 <body>
     <header>
         <div class="container">
-            <h1>Configuración de Perfil</h1>
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 4C9.373 4 4 9.373 4 16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16C28 9.373 22.627 4 16 4ZM16 8C18.21 8 20 9.79 20 12C20 14.21 18.21 16 16 16C13.79 16 12 14.21 12 12C12 9.79 13.79 8 16 8ZM16 24.4C13 24.4 10.36 22.84 9 20.4C9.05 18.2 13 17 16 17C18.99 17 22.95 18.2 23 20.4C21.64 22.84 19 24.4 16 24.4Z" fill="#BEAC81"/>
+                    </svg>
+                    <span>Mi Cuenta</span>
+                </div>
+                <nav class="menu">
+                    <a href="#" class="active">Perfil</a>
+                    <a href="#">INICIO</a>
+                    <a href="#">FOROS</a>
+                    <a href="#">MENSAJES</a>
+                </nav>
+            </div>
         </div>
     </header>
     
     <div class="container">
+        <div class="card">
+            <h2>Foto de Perfil</h2>
+            <div class="profile-photo-section">
+                <div class="profile-photo">
+                    <img id="profile-image" src="/api/placeholder/120/120" alt="Foto de perfil">
+                </div>
+                <div class="photo-actions">
+                    <div class="file-input-wrapper">
+                        <button class="btn-secondary">Seleccionar imagen</button>
+                        <input type="file" id="photo-upload" accept="image/*">
+                    </div>
+                    <button id="remove-photo" class="btn-secondary">Eliminar foto</button>
+                    <p class="photo-hint">Formatos permitidos: JPG, PNG. Tamaño máximo: 5MB</p>
+                </div>
+            </div>
+        </div>
+
         <div class="card">
             <h2>Información Personal</h2>
             <div class="form-group">
@@ -175,6 +205,9 @@
     </script>
 </body>
 </html>
+
+
+<!-- Código js Caye -->
 
     <!-- <script>
         // Simulación de datos de la API

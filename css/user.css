@@ -29,11 +29,48 @@ body {
 
 header {
     background-color: var(--primary);
+    padding: 15px 0;
+    margin-bottom: 1vh;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo span {
+    font-size: 20px;
+    font-weight: 500;
     color: var(--secondary);
-    padding: 20px 0;
-    text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 3px solid var(--secondary);
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.menu a:hover {
+    color: var(--secondary);
+}
+
+.menu a.active {
+    color: var(--secondary);
 }
 
 h1 {
@@ -53,7 +90,7 @@ h2 {
     background-color: var(--card-bg);
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 1vh;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -95,9 +132,9 @@ textarea {
 }
 
 button {
-    background-color: var(--secondary);
-    color: var(--primary-dark);
-    border: none;
+    background-color: transparent;
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
     padding: 12px 20px;
     border-radius: 4px;
     font-size: 16px;
@@ -107,7 +144,69 @@ button {
 }
 
 button:hover {
-    background-color: #d0bd8e;
+    background-color: var(--secondary);
+    color: var(--primary-dark);
+}
+
+.profile-photo-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--input-bg);
+    border: 3px solid var(--secondary);
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-actions {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.file-input-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.file-input-wrapper input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: var(--disabled-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+}
+
+.btn-secondary:hover {
+    background-color: #444;
+}
+
+.photo-hint {
+    font-size: 14px;
+    color: #AAA;
+    margin-top: 5px;
 }
 
 .checkbox-group {

@@ -44,7 +44,7 @@
                     </div>
                     
                     <div class="col-1">
-                        <a class="nav-link icon" href="user.html" aria-label="Icono de usuario">Perfil</a>
+                        <a class="nav-link icon" href="#" aria-label="Icono de usuario">Perfil</a>
                     </div>
                 </div>
             </div>
@@ -62,13 +62,13 @@
         <div class="container content">
             <h1 class="display-4">El Séptimo Club</h1>
             <p class="lead">Tu portal de películas antiguas favoritas</p>
-            <a href="#peliculas-populares" class="btn-inicio btn-primary mt-4">Ver Películas Populares</a>
+            <a href="#peliculas-populares" class="btn-inicio btn-primary mt-4">VER PELÍCULAS POPULARES</a>
         </div>
     </section>
 
     <main id="contenido">
         <section id="peliculas-populares" class="movies-section">
-            <p class="top-pelis">Peliculas Virales</p>
+            <p class="top-pelis">LO MÁS VISTO</p>
             <div class="container py-5">
                 <div class="section-header justify-content-end">
                     <div>
@@ -88,7 +88,7 @@
                 <section id="peliculas-populares" class="movies-section">
                         <div class="container py-5">
                             <div class="section-header">
-                                <h3>Películas Premiadas</h3>
+                                <h3>NOVEDADES</h3>
                                 <div>
                                     <button id="prev-award" class="scroll-btn me-2">←</button>
                                     <button id="next-award" class="scroll-btn">→</button>
@@ -102,6 +102,24 @@
                         </div>
                 </div>
                 </section>
+
+                <section id="peliculas-populares" class="movies-section">
+                    <div class="container py-5">
+                        <div class="section-header">
+                            <h3>Cine de Comedia</h3>
+                            <div>
+                                <button id="prev-award" class="scroll-btn me-2">←</button>
+                                <button id="next-award" class="scroll-btn">→</button>
+                            </div>
+                        </div>
+                        
+                        <div class="movies-container" id="award-movies">
+                            <!-- Espacio para películas premiadas que vendrán de la BBDD perfecta -->
+                            <!-- Las películas premiadas se cargarán dinámicamente aquí -->
+                        </div>
+                    </div>
+            </div>
+            </section>
     </main>
 
     <div class="word-carousel-container">
@@ -134,7 +152,7 @@
                                     <h3 class="chat-title">Reseñas de Películas</h3>
                                     <div class="chat-members">428 miembros, 12 en línea</div>
                                 </div>
-                                <button class="btn btn-sm btn-outline-light">Unirse</button>
+                                <button class="btn-chat btn-sm btn-outline-light">Unirse</button>
                             </div>
                             <div class="chat-body">
                                 <div class="message message-received">
@@ -205,7 +223,7 @@
                                     <h3 class="chat-title">Directores Legendarios</h3>
                                     <div class="chat-members">256 miembros, 8 en línea</div>
                                 </div>
-                                <button class="btn btn-sm btn-outline-light">Unirse</button>
+                                <button class="btn-chat btn-sm btn-outline-light">Unirse</button>
                             </div>
                             <div class="chat-body">
                                 <div class="message message-received">
@@ -272,11 +290,99 @@
             </div>
         </section>
 
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-main">
+                    <div class="footer-logo">
+                        <img src="/api/placeholder/120/30" alt="Logo" class="logo">
+                        <p class="tagline">Tu plataforma online desde 2025</p>
+                    </div>
+                    
+                    <div class="footer-links-container">
+                        <div class="footer-links-group">
+                            <h6>Enlaces</h6>
+                            <div class="links-row">
+                                <a href="#">Inicio</a>
+                                <a href="#">Foros</a>
+                                <a href="#">Comunidades</a>
+                            </div>
+                        </div>
+                        
+                        <div class="footer-links-group">
+                            <h6>Soporte</h6>
+                            <div class="links-row">
+                                <a href="#">Ayuda</a>
+                                <a href="#">FAQ</a>
+                                <a href="#">Contacto</a>
+                            </div>
+                        </div>
+                        
+                        <div class="footer-social">
+                            <h6>Síguenos</h6>
+                            <div class="social-icons">
+                                <a href="#" aria-label="TikTok">TK</a>
+                                <a href="#" aria-label="Twitter">TW</a>
+                                <a href="#" aria-label="Instagram">IG</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p class="copyright">&copy; 2025 El Séptimo Club</p>
+                    <div class="legal-links">
+                        <a href="#">Términos</a>
+                        <a href="#">Privacidad</a>
+                        <a href="#">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
 
    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     
-    <script src="js/inicio.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Función para controlar el desplazamiento horizontal de las películas populares
+            const popularMovies = document.getElementById('popular-movies');
+            const prevPopular = document.getElementById('prev-popular');
+            const nextPopular = document.getElementById('next-popular');
+            
+            // Configurar botones de navegación para películas populares
+            prevPopular.addEventListener('click', function() {
+                popularMovies.scrollBy({ left: -280, behavior: 'smooth' });
+            });
+            
+            nextPopular.addEventListener('click', function() {
+                popularMovies.scrollBy({ left: 280, behavior: 'smooth' });
+            });
+            
+            // Función para controlar el desplazamiento horizontal de las películas premiadas
+            const awardMovies = document.getElementById('award-movies');
+            const prevAward = document.getElementById('prev-award');
+            const nextAward = document.getElementById('next-award');
+            
+            // Configurar botones de navegación para películas premiadas
+            prevAward.addEventListener('click', function() {
+                awardMovies.scrollBy({ left: -200, behavior: 'smooth' });
+            });
+            
+            nextAward.addEventListener('click', function() {
+                awardMovies.scrollBy({ left: 200, behavior: 'smooth' });
+            });
+        });
+
+                window.addEventListener("scroll", function () {
+            const navbar = document.querySelector(".navbar");
+            if (window.scrollY > 50) {
+                navbar.classList.add("blur");
+            } else {
+                navbar.classList.remove("blur");
+            }
+        });
+    </script>
 </body>
 </html>

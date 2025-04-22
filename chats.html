@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="css/chats.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <div class="row w-100 align-items-center">
+
+                    <div class="col-1">
+                        <a class="navbar-brand" href="#">
+                            <img src="" alt="Logo" class="logo">
+                        </a>
+                    </div>
+                    
+                    <div class="col-1">
+                        <a class="nav-link" href="#">INICIO</a>
+                    </div>
+                    
+                    <div class="col-1">
+                        <a class="nav-link" href="#">FOROS</a>
+                    </div>
+                    
+                    <div class="col-1">
+                        <a class="nav-link" href="#">MENSAJES</a>
+                    </div>
+                    
+                    <div class="col-4">
+                    </div>
+                    
+                    <div class="col-3">
+                        <form class="search-form" role="search" aria-label="Buscar en el sitio">
+                            <input class="form-control" type="search" placeholder="Buscar" aria-label="Buscar">
+                        </form>
+                    </div>
+                    
+                    <div class="col-1">
+                        <a class="nav-link icon" href="#" aria-label="Icono de usuario">Perfil</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container p-0 chat-container">
+        <div class="row g-0 h-100">
+            <!-- Lista de chats -->
+            <div class="col-md-4 col-lg-3 sidebar" id="sidebar">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Buscar chats, grupos o películas...">
+                </div>
+                <div class="chat-list">
+                    <div class="chat-item active">
+                        <div class="profile-pic">C</div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <div class="chat-name">Clásicos del Cine</div>
+                                <div class="chat-time">10:30</div>
+                            </div>
+                            <div class="last-message">Ana: La escena final de Casablanca siempre me emociona</div>
+                        </div>
+                        <div class="unread-badge">3</div>
+                    </div>
+                    <div class="chat-item">
+                        <div class="profile-pic">S</div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <div class="chat-name">Scorsese Fans</div>
+                                <div class="chat-time">09:15</div>
+                            </div>
+                            <div class="last-message">Juan: Justo ayer volví a ver Taxi Driver</div>
+                        </div>
+                        <div class="unread-badge">1</div>
+                    </div>
+                    <div class="chat-item">
+                        <div class="profile-pic">L</div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <div class="chat-name">Laura - Crítica</div>
+                                <div class="chat-time">Ayer</div>
+                            </div>
+                            <div class="last-message">¿Vamos al preestreno del jueves?</div>
+                        </div>
+                    </div>
+                    <div class="chat-item">
+                        <div class="profile-pic">C</div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <div class="chat-name">Club Cinéfilos</div>
+                                <div class="chat-time">21/04</div>
+                            </div>
+                            <div class="last-message">Admin: La votación para la película del mes está abierta</div>
+                        </div>
+                    </div>
+                    <div class="chat-item">
+                        <div class="profile-pic">D</div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <div class="chat-name">David - Director</div>
+                                <div class="chat-time">20/04</div>
+                            </div>
+                            <div class="last-message">Gracias por la reseña de mi cortometraje</div>
+                        </div>
+                    </div>
+                    <div class="chat-item">
+                        <div class="profile-pic">F</div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <div class="chat-name">Festival de Sitges</div>
+                                <div class="chat-time">18/04</div>
+                            </div>
+                            <div class="last-message">Carlos: Ya tengo las entradas para la inauguración</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Chat -->
+            <div class="col-md-8 col-lg-9 main-chat">
+                <div class="chat-header">
+                    <div class="profile-pic">C</div>
+                    <div class="chat-info">
+                        <div class="chat-name">Clásicos del Cine <span class="event-tag">42 miembros</span></div>
+                        <div class="last-message online-status">6 miembros en línea</div>
+                    </div>
+                </div>
+                
+                <div class="chat-body">
+                    <div class="messages-container">
+                        <div class="message received">
+                            <div class="sender-name">Ana</div>
+                            Estuve revisando la filmografía completa de Hitchcock este fin de semana. Increíble cómo <span class="film-mention">Vértigo</span> sigue siendo tan moderna a pesar de los años.
+                            <div class="message-time">10:15</div>
+                        </div>
+                        
+                        <div class="message sent">
+                            Totalmente de acuerdo. Aunque personalmente prefiero <span class="film-mention">La ventana indiscreta</span>. La tensión que logra crear en un espacio tan reducido es magistral.
+                            <div class="message-time">10:18</div>
+                        </div>
+                        
+                        <div class="message received">
+                            <div class="sender-name">Carlos</div>
+                            ¿Alguien va a unirse al maratón de cine negro del próximo sábado? Proyectarán <span class="film-mention">El halcón maltés</span> y <span class="film-mention">El sueño eterno</span>.
+                            <div class="message-time">10:22</div>
+                        </div>
+                        
+                        <div class="message sent">
+                            Yo me apunto. Humphrey Bogart en su mejor momento. ¿Dónde será exactamente?
+                            <div class="message-time">10:25</div>
+                        </div>
+                        
+                        <div class="message received">
+                            <div class="sender-name">Ana</div>
+                            La escena final de <span class="film-mention">Casablanca</span> siempre me emociona. "Siempre nos quedará París" es una de las mejores líneas del cine clásico. ¿Cuál es vuestra escena favorita del cine clásico?
+                            <div class="message-time">10:30</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-footer">
+                    <input type="text" class="message-input" placeholder="Escribe un mensaje...">
+                    <button class="send-button">➤</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Botón para mostrar/ocultar sidebar en móviles -->
+    <div class="toggle-sidebar d-md-none">☰</div>
+    
+    <script src="js/chats.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

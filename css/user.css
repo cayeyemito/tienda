@@ -1,160 +1,252 @@
-body {
-	margin: 0;
-	padding: 0;
-	font-family: Helvetica, sans-serif;
-    background-color: rgb(22, 22, 22)!important;
+:root {
+    --primary: #1E1E1E;
+    --primary-dark: #161616;
+    --secondary: #BEAC81;
+    --text-color: #E0E0E0;
+    --input-bg: #2A2A2A;
+    --card-bg: #252525;
+    --input-border: #3A3A3A;
+    --disabled-bg: #333333;
 }
 
 * {
-    scrollbar-width: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-::-webkit-scrollbar {
-    display: none;
+body {
+    background-color: var(--primary-dark);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 header {
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-}
-
-.navbar {
-    background-color: transparent;
+    background-color: var(--primary);
     padding: 15px 0;
-    transition: background 0.3s ease;
-    border-bottom: 1px solid rgb(190, 172, 129);
+    margin-bottom: 1vh;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.search-form .form-control::placeholder {
-    color: white;
-}
-
-.navbar.blur {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-}
-
-.navbar .nav-link {
-    color: white;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.navbar .nav-link:hover {
-    color: rgb(190, 172, 129);
-}
-
-.navbar .navbar-brand img {
-    height: 40px;
-}
-
-.user-profile-container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 6rem 1rem 0;
-}
-
-.profile-header {
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid #BEAC81;
-}
-
-.publicaciones, .seguidores, .seguidos, .avatar-container{
-    height: 200px;
-    text-align: center;
-    color: #BEAC81;
-}
-
-.user-avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid #BEAC81;
-    margin-bottom: 1rem;
-}
-
-.profile-title {
-    color: #BEAC81;
-    font-size: 2.5rem;
-    margin: 1rem 0;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    color: #BEAC81;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-}
-
-.form-control {
-    background-color: rgb(22, 22, 22) !important;
-    border: 2px solid #BEAC81 !important;
-    color: white !important;
-    padding: 0.8rem;
-    width: 100%;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-input.form-control:disabled,
-textarea.form-control:disabled {
-    background-color: rgb(22, 22, 22) !important;
-    border: 2px solid #BEAC81 !important;
-    color: white !important;
-    opacity: 1; /* opcional, evita el gris por defecto */
-    padding: 0.8rem;
-    width: 100%;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.form-control:focus {
-    border-color: #BEAC81;
-    box-shadow: 0 0 0 3px rgba(190, 172, 129, 0.2);
-}
-
-.form-actions {
-    text-align: right;
-    margin-top: 2rem;
-}
-
-.btn-inicio{
-    background-color: #BEAC81 !important;
-    color: black !important;
-    border: none;
-    border-radius: 5px;
-}
-
-.security-section .security-item {
+.header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #BEAC81;
 }
 
-.preference-item {
-    padding: 1rem;
-    border-bottom: 1px solid #BEAC81;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.btn-change-password {
+.logo span {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--secondary);
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.menu a:hover {
+    color: var(--secondary);
+}
+
+.menu a.active {
+    color: var(--secondary);
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: var(--secondary);
+    border-bottom: 2px solid var(--secondary);
+    padding-bottom: 10px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 1vh;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.membership {
+    background-color: var(--disabled-bg);
+    padding: 10px;
+    border-radius: 4px;
+    font-style: italic;
+    color: #AAA;
+}
+
+button {
     background-color: transparent;
-    border: 1px solid #BEAC81;
-    color: #BEAC81;
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.btn-change-password:hover {
-    background-color: #BEAC81;
-    color: rgb(22, 22, 22);
+button:hover {
+    background-color: var(--secondary);
+    color: var(--primary-dark);
 }
 
-.movies-section{
-    color: white;
+.profile-photo-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--input-bg);
+    border: 3px solid var(--secondary);
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-actions {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.file-input-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.file-input-wrapper input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: var(--disabled-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+}
+
+.btn-secondary:hover {
+    background-color: #444;
+}
+
+.photo-hint {
+    font-size: 14px;
+    color: #AAA;
+    margin-top: 5px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.checkbox-group input {
+    margin-right: 10px;
+    accent-color: var(--secondary);
+    width: 18px;
+    height: 18px;
+}
+
+.password-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.change-password-form {
+    margin-top: 20px;
+    display: none;
+    border-top: 1px solid var(--input-border);
+    padding-top: 20px;
+}
+
+.show {
+    display: block;
+}
+
+.save-section {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 2px rgba(190, 172, 129, 0.3);
 }

@@ -7,7 +7,7 @@ let isCounting = true;
 
 function updateBackground(progress) {
     const currentBrightness = initialBrightness - (initialBrightness - targetBrightness) * progress;
-    document.body.style.filter = `sepia(0.75) brightness(${currentBrightness})`;
+    document.body.style.filter = `sepia(0.60) brightness(${currentBrightness})`;
 }
 
 function animate(timestamp, startTime) {
@@ -131,7 +131,8 @@ function restartBrightness() {
           alert("Este correo ya está registrado. Por favor, usa otro.");
         } else if (data.status === "success") {
           alert("Usuario registrado correctamente.");
-          window.location.href = "inicio.html";
+          const emailCodificado = btoa(email)
+          window.location.href = `inicio.html?email=${emailCodificado}`;
         } else {
           alert(data.message);
         }
@@ -204,7 +205,7 @@ function restartBrightness() {
       const progress = Math.min(elapsed / 1000, 1); // Progreso en 1 segundo
 
       const currentBrightness = targetBrightness + (initialBrightness - targetBrightness) * progress;
-      document.body.style.filter = `sepia(0.75) brightness(${currentBrightness})`;
+      document.body.style.filter = `sepia(0.60) brightness(${currentBrightness})`;
 
       if (progress < 1) {
           animation = requestAnimationFrame((ts) => animateRestore(ts, startTime));
@@ -215,7 +216,7 @@ function restartBrightness() {
 }
 
 // Inicializar brillo al cargar
-document.body.style.filter = `sepia(0.75) brightness(${initialBrightness})`;
+document.body.style.filter = `sepia(0.60) brightness(${initialBrightness})`;
 
 document.body.addEventListener('click', function(e) {
     // Abrir popup

@@ -1,19 +1,70 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-color: #1E1E1E;
+	font-family: Helvetica, sans-serif;
+    background-color: rgb(22, 22, 22)!important;
+}
+
+* {
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar {
+    background-color: transparent;
+    padding: 15px 0;
+    transition: background 0.3s ease;
+    border-bottom: 1px solid rgb(190, 172, 129);
+}
+
+.search-form .form-control::placeholder {
+    color: white;
+}
+
+.navbar.blur {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.navbar .nav-link {
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: rgb(190, 172, 129);
+}
+
+.navbar .navbar-brand img {
+    height: 40px;
 }
 
 .user-profile-container {
     max-width: 1200px;
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 6rem 1rem 0;
 }
 
 .profile-header {
-    text-align: center;
     padding: 2rem;
     margin-bottom: 2rem;
+    border-bottom: 2px solid #BEAC81;
+}
+
+.publicaciones, .seguidores, .seguidos, .avatar-container{
+    height: 200px;
+    text-align: center;
+    color: #BEAC81;
 }
 
 .user-avatar {
@@ -42,9 +93,21 @@ body {
 }
 
 .form-control {
-    background-color: rgb(30, 30, 30);
-    border: 1px solid rgb(49, 49, 49);
-    color: white;
+    background-color: rgb(22, 22, 22) !important;
+    border: 2px solid #BEAC81 !important;
+    color: white !important;
+    padding: 0.8rem;
+    width: 100%;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+input.form-control:disabled,
+textarea.form-control:disabled {
+    background-color: rgb(22, 22, 22) !important;
+    border: 2px solid #BEAC81 !important;
+    color: white !important;
+    opacity: 1; /* opcional, evita el gris por defecto */
     padding: 0.8rem;
     width: 100%;
     border-radius: 8px;
@@ -61,17 +124,24 @@ body {
     margin-top: 2rem;
 }
 
+.btn-inicio{
+    background-color: #BEAC81 !important;
+    color: black !important;
+    border: none;
+    border-radius: 5px;
+}
+
 .security-section .security-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    border-bottom: 1px solid rgb(49, 49, 49);
+    border-bottom: 1px solid #BEAC81;
 }
 
 .preference-item {
     padding: 1rem;
-    border-bottom: 1px solid rgb(49, 49, 49);
+    border-bottom: 1px solid #BEAC81;
 }
 
 .btn-change-password {
@@ -83,4 +153,8 @@ body {
 .btn-change-password:hover {
     background-color: #BEAC81;
     color: rgb(22, 22, 22);
+}
+
+.movies-section{
+    color: white;
 }

@@ -17,7 +17,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	background: var(--black);
-  	filter: sepia(0.75);
+  	filter: sepia(0.50);
 	perspective: 100vmin;
 }
 
@@ -31,7 +31,7 @@ body {
 	justify-content: center;
 	background-size: cover;
 	transition: var(--trsn);
-  	background-color: grey;
+  background-color: grey;
 }
 
 .content:before {
@@ -674,14 +674,6 @@ body {
   top: 9vh;
 }
 
-.pos1icon{
-  top: 3.5vh;
-}
-
-.pos2icon{
-  top: 10.5vh;
-}
-
 .forgotPassword{
   position: absolute;
   white-space: normal; /* Asegura que el texto se envuelva */
@@ -724,7 +716,7 @@ body {
 .goRegisterForm{
   position: absolute;
   white-space: normal; /* Asegura que el texto se envuelva */
-  top: 30vh;
+  top: 26vh;
   color: #BEAC81;
   border: none; /* Elimina el borde */
   font-size: 14px; /* Ajusta el tamaño del texto */
@@ -735,4 +727,83 @@ body {
 
 .goRegisterForm:hover {
   color: #ffffff;
+}
+
+/* Dispositivos muy pequeños (teléfonos en vertical, menos de 576px) */
+@media (max-width: 575.98px) {
+  .goRegisterForm{
+  }
+  
+  .pos1icon{
+    top: 3.7vh;
+  }
+  
+  .pos2icon{
+    top: 10.5vh;
+  }
+  
+}
+
+/* Dispositivos pequeños (teléfonos en horizontal, de 576px a 767.98px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .goRegisterForm{
+    top: 33vh;
+  }
+  
+  .pos1icon{
+    top: 3.6vh;
+  }
+  
+  .pos2icon{
+    top: 10.5vh;
+  }
+  
+}
+
+/* Dispositivos medianos (tablets, de 768px a 991.98px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .goRegisterForm{
+    top: 31vh;
+  }
+  
+  .pos1icon{
+    top: 3.6vh;
+  }
+  
+  .pos2icon{
+    top: 10.4vh;
+  }
+  
+}
+
+/* Dispositivos grandes (laptops, de 992px a 1199.98px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .goRegisterForm{
+    top: 29vh;
+  }
+
+  .pos1icon{
+    top: 3.5vh;
+  }
+  
+  .pos2icon{
+    top: 10.4vh;
+  }
+  
+}
+
+/* Dispositivos extra grandes (desktops grandes, 1200px en adelante) */
+@media (min-width: 1200px) {
+  .goRegisterForm{
+    top: 25.5vh;
+  }
+  
+  .pos1icon{
+    top: 3.2vh;
+  }
+  
+  .pos2icon{
+    top: 10.3vh;
+  }
+  
 }
